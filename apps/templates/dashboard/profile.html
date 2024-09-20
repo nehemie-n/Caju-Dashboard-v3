@@ -1,0 +1,251 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load render_bundle from webpack_loader %}
+{% load index %}
+
+
+{% block title %} Profile {% endblock title %}
+
+{% block content %}
+
+
+<div class="form-group">
+    <div class="header pb-6 d-flex align-items-center" style="min-height: 300px;">
+        <!-- Mask -->
+        <span class="mask bg-primary"></span>
+        <!-- Header container -->
+        <button id="collap_button" class="pr-3 sidenav-toggler sidenav-toggler-dark btn btn-primary" type="button"
+            data-action="sidenav-pin" data-target="#sidenav-main"
+            style="position: absolute; margin-bottom: 320px; margin-left: 20px;"><i
+                class="fas fa-bars"></i></button>
+        <div class="container-fluid d-flex align-items-center">
+            <div class="row">
+                <div class="col-lg-7 col-md-10">
+                    <div class="py-4">
+                        <h3 class="display-3 text-white">
+                            {% trans "Hello" %} {{ user.username }}
+                        </h3>
+                        <p class="text-white mt-0 mb-5">{% trans "This is your profile page, you can update your profile information by clicking the Edit profile below" %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-xl-4 order-xl-2">
+                    <div class="card card-profile">
+                        <!-- <img src="{% static 'assets/img/theme/img-1-1000x600.jpg' %}" alt="Image placeholder"
+                            class="card-img-top"> -->
+                        <div class="row justify-content-center">
+                            <div class="col-lg-3 order-lg-2">
+                                <div class="card-profile-image">
+                                    <a href="#">
+                                        <img src="{% static 'assets/img/theme/avatar.jpg' %}" class="rounded-circle"
+                                            style="border-color: #DFF4F4">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4" style="border-radius: .375rem!important">
+                            <div class="d-flex justify-content-between">
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            &nbsp;&nbsp;
+                            <div class="text-center">
+                                <h5 class="h3">
+                                    {{ user.username }}
+                                </h5>
+                                <div class="h5 font-weight-300">
+                                    {{ user.email }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-8 order-xl-1">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                    <h3 class="mb-0">{% trans "Edit profile" %} </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="heading-small text-muted mb-4">{% trans "User information" %}</h6>
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-first-name">{% trans "First Name" %}</label>
+                                            {{ form.first_name }}
+                                            <span class="text-error errors">{{ form.first_name.errors }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-last-name">{% trans "Last Name"%}</label>
+                                            {{ form.last_name }}
+                                            <span class="text-error errors">{{ form.last_name.errors }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-first-name">{% trans "Phone number" %}</label>
+                                            <div>
+                                                <div>
+                                                    {% for subwidget in custom_form.phone.widget.subwidgets %}
+                                                        <div>
+                                                            {{ subwidget }}
+                                                        </div>
+                                                    {% endfor %}
+                                                    <div>
+                                                        {{ custom_form.phone }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="text-error errors">{{ custom_form.phone.errors }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-username">{% trans "Username" %}</label>
+                                            <input type="text" id="input-username" class="form-control"
+                                                placeholder="Username" value="{{ request.user.username }}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-email">{% trans "Email address" %}</label>
+                                            <input type="email" id="input-email" class="form-control"
+                                                placeholder="{{ request.user.email }}" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-role">{% trans "Role" %}</label>
+                                            <input type="text" id="input-role" class="form-control"
+                                                placeholder="{{ request.user.remuser.role.role_name }}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="organization_name">{% trans "Organization" %}</label>
+                                            <input type="text" id="organization_name" class="form-control"
+                                                placeholder="{{ request.user.remuser.organization_name }}" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    {% comment %} country {% endcomment %}
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="country_id">{% trans "Countries" %}</label>
+                                            <select multiple  id="country_id" class="form-control" placeholder="Countries" disabled>
+                                                {% for country in request.user.remuser.country_id.all %}
+                                                    <option value="{{ country.id }}">{{ country }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="my-4" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-neutral mb-4" name="user_custom_profile_form_btn">{% trans "Save" %}</button>
+            {% if not request.user.remuser.role.role_name|check_list:"GLOBAL-ADMIN" %}
+                <div class="row">
+                    <div class="col-xl-8 order-xl-1">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <h3 class="mb-0">{% trans "For changing any of the below information, please submit a request." %} </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="pl-lg-4">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="id_organization">{% trans "Organization Type" %}</label>
+                                                {{ request_form.organization }}
+                                                <span class="text-error errors">{{ request_form.organization.errors }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="id_organization_name">{% trans "Organization Name" %}</label>
+                                                {{ request_form.organization_name }}
+                                                <span class="text-error errors">{{ request_form.organization_name.errors }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                 <label class="form-control-label" for="id_country">{% trans "Country" %}</label>
+                                                  {{ request_form.country_id }}
+                                                <span class="text-error errors">{{ request_form.country_id.errors }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="id_role">{% trans "Role" %}</label>
+                                                {{ request_form.role }}
+                                                <span class="text-error errors">{{ request_form.role.errors }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="id_message">{% trans "Request" %}</label>
+                                                {{ request_form.message }}
+                                                <span class="text-error errors">{{ request_form.message.errors }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-neutral" name="request_form_btn">{% trans "Send request" %}</button>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+    {% render_bundle 'dropdown_filter' %}
+    <script>
+        var currentLanguage = "{{ request.LANGUAGE_CODE }}";
+        $(document).ready(function () {
+            $('#id_organization').change(function () {
+                var selectedValue = $(this).find('option:selected').text();
+                updateOptions("Roles", selectedValue, currentLanguage);
+            });
+        });
+    </script>
+{% endblock javascripts %}

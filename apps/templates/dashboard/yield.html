@@ -1,0 +1,364 @@
+{% extends 'layouts/base.html' %}
+{% load i18n %}
+{% load index %}
+
+
+{% block title %} Tables {% endblock title %}
+
+{% block content %}
+
+  <div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div>
+            <button id = "collap_button" class="pr-3 sidenav-toggler sidenav-toggler-dark btn btn-primary" type="button" data-action="sidenav-pin" data-target="#sidenav-main"><i class="fas fa-bars"></i></button>&nbsp;&nbsp;&nbsp;<h6 class="h2 text-white d-inline-block mb-0">{% trans "Yields" %}</h6>
+          </div>
+          <div style="margin-left: auto">
+            <form class="form-inline my-2 my-lg-0" action="{% url 'yield' %}">
+            <input class="form-control mr-sm-2" type="search"   placeholder="Search" aria-label={% trans "Search" %} name="search">
+            {{ form.column }}
+            {% if request.user.remuser.role.role_name == "GLOBAL-ADMIN" %}
+                {{ form.yields_country }}
+            {% endif %}
+            &nbsp&nbsp<button id="search_submit1" class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans "Search" %}</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header border-0">
+                        <div style="float: left">
+                        <h3 class="mb-0">{% trans "Yield" %}</h3>
+                        </div>
+                        <div style="float: right; display: flex; justify: space-between;">
+                            {% if request.user|user_role|check_list:"GLOBAL-ADMIN,COUNTRY-ADMIN" %}
+                            <div class="mr-4">
+                                <div class="modal fade" id="upload_modal" tabindex="-1" aria-labelledby="upload_modal" aria-hidden="true">
+                                    <div class="modal-dialog modal-large">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="myModalLabel">Upload Yield Data</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div>
+                                                    <form class="mb-3 text-center">
+                                                        {% csrf_token %}
+                                                        <button class="btn btn-secondary" formmethod="post" formtarget="_blank" name="download_format" type="submit"> <i class="fa fa-download mr-1"></i>Download Format</button>
+                                                    </form>
+                                                    <form id="upload_form" enctype="multipart/form-data">
+                                                        {% csrf_token %}
+                                                        <div class="custom-file mb-4">
+                                                            <input type="file" class="custom-file-input" style="opacity:0!important;" name="file" id="file_input" form="upload_form">
+                                                            <label class="custom-file-label" for="file">Choose file</label>
+                                                        </div>                                                    
+                                                        <p class="text-sm">
+                                                            <span>
+                                                            Get the format file, fill in your information, and then upload it again. We'll make sure everything looks good before accepting it. Here are the columns we allow.
+                                                            </span>
+                                                            <ul class="text-xs">
+                                                                <li>country</li>
+                                                                <li>plantation_code</li>
+                                                                <li>admin_level_1 <em>(Adminstrative Level 1) </em> <em> (optional) </em></li>
+                                                                <li>admin_level_2 <em>(Adminstrative Level 2) </em> <em> (optional) </em></li>
+                                                                <li>admin_level_3 <em>(Adminstrative Level 3) </em> <em> (optional) </em></li>
+                                                                <li>arrondissement <em>(optional)</em></li>
+                                                                <li>village <em>(optional)</em></li>
+                                                                <li>owner_first_name <em>(optional)</em></li>
+                                                                <li>owner_last_name <em>(optional)</em></li>
+                                                                <li>surface_area</li>
+                                                                <li>total_yield_kg</li>
+                                                                <li>total_yield_per_ha_kg</li>
+                                                                <li>total_yield_per_tree_kg</li>
+                                                                <li>sex</li>
+                                                                <li>product_id <em>(optional)</em></li>
+                                                                <li>total_number_trees</li>
+                                                                <li>total_sick_trees</li>
+                                                                <li>total_dead_trees</li>
+                                                                <li>total_trees_out_of_prod</li>
+                                                                <li>plantation_age</li>
+                                                                <li>latitude <em>(optional)</em></li>
+                                                                <li>longitude <em>(optional)</em></li>
+                                                                <li>altitude <em>(optional)</em></li>
+                                                                <li>status <em>(1 active, 0 inactive)</em></li>
+                                                                <li>year</li>
+                                                            </ul>
+                                                        </p>
+                                                        <div id="upload_success" class="alert alert-success alert-dismissible fade mt-2">
+                                                            <span>Successfully uploaded yield data.<span>
+                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div id="upload_error" class="alert alert-warning alert-dismissible fade mt-2">
+                                                            <span id="upload_error_text"><span>
+                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-footer flex" style="width: 100%; justify-content: space-between; align-items: center;">
+                                                            <div style="max-width: 300px; width: 100%;">
+                                                                <div class="progress" id="progress"  style="height: 24px; display: none;">
+                                                                    <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                                                </div>
+                                                            </div>
+                                                            <button class="btn btn-primary" formmethod="post" id="upload_button" name="upload_button" type="submit"> <i class="fa fa-upload mr-1"></i>Upload</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                
+                                <button data-toggle="modal" data-target="#upload_modal" class="btn btn-secondary"  name="upload">
+                                    <i class="fa fa-upload mr-1"></i>
+                                    {% trans "Upload Data" %}
+                                </button>
+                            </div> 
+                            {% endif %}
+                            <form>
+                                {% csrf_token %}
+                                <button class="btn btn-primary" formmethod="post" formtarget="_blank" name="xls" type="submit">{% trans "Export Excel" %}</button>
+                                <button class="btn btn-primary" formmethod="post" formtarget="_blank" name="csv" type="submit">{% trans "Export CSV" %}</button>
+                                <button class="btn btn-primary" formmethod="post" formtarget="_blank" name="pdf" type="submit">{% trans "Export PDF" %}</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Light table -->
+                    <div class="table-responsive">
+                    <table id="yield_table" class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                        <th scope="col" class="sort">No</th>
+                        <th scope="col" class="sort" data-sort="name">{% trans "Plantation Name" %}</th>
+                        <th scope="col" class="sort" >{% trans "Product ID" %}</th>
+                        <th scope="col" class="sort" >{% trans "Year" %}</th>
+                        <th scope="col" class="sort" >{% trans "Total Plants" %}</th>
+                        <th scope="col" class="sort" >{% trans "Yields (Kg)" %}</th>
+                        <th scope="col" class="sort" >{% trans "Yields/Ha (Kg)" %}</th>
+                        <th scope="col" class="sort" >{% trans "Yields/Tree (Kg)" %}</th>
+                        <th scope="col" class="sort" >{% trans "Sick Trees" %}</th>
+                        <th scope="col" class="sort" >{% trans "Dead Trees" %}</th>
+                        <th scope="col" class="sort" >{% trans "Out of Prod. Trees" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody class="list">
+                        {% for yield in yields %}
+                            <tr>
+                                <th scope="row">
+                                    <div class="media align-items-center">
+                                        <div class="media-body">
+                                            <span class="name mb-0 text-sm">{{ forloop.counter }}</span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td >
+                                    {{ yield.plantation_name }}
+                                </td>
+                                <td >
+                                    {{ yield.product_id }}
+                                </td>
+                                <td >
+                                    {{ yield.year }}
+                                </td>
+                                <td >
+                                    {{ yield.total_number_trees }}
+                                </td>
+                                <td >
+                                    {{ yield.total_yield_kg }}
+                                </td>
+                                <td >
+                                    {{ yield.total_yield_per_ha_kg }}
+                                </td>
+                                <td >
+                                    {{ yield.total_yield_per_tree_kg }}
+                                </td>
+                                <td >
+                                    {{ yield.total_sick_trees }}
+                                </td>
+                                <td >
+                                    {{ yield.total_dead_trees }}
+                                </td>
+                                <td >
+                                    {{ yield.total_trees_out_of_prod }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    </table>
+                    </div>
+
+                    <!-- <div class="card-footer py-4">
+                        <nav aria-label="...">
+                            {% if yields.has_other_pages %}
+                                <ul class="pagination" justify-content-end mb-0">
+                                    {% if yields.has_previous %}
+                                        <li class="page-item active">
+                                            <a class="page-link" href="?page={{ yields.previous_page_number }}">
+                                                <i class="fas fa-angle-left"></i>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1">
+                                                <i class="fas fa-angle-left"></i>
+                                                <span class="sr-only">
+                                                    {% trans "Previous" %}
+                                                </span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% for i in page_range|default_if_none:yields.paginator.get_elided_page_range %}
+                                        {% if yields.number == i %}
+                                            <li class="page-item">
+
+                                                <a class="page-link" href="#">{{ i }}</a>
+                                                <span class="sr-only">
+                                                    (current)
+                                                </span>
+                                            </li>
+                                        {% else %}
+
+                                            {% if i == yields.paginator.ELLIPSIS %}
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#">
+                                                        {{ i }}
+                                                    </a>
+                                                </li>
+                                            {% else %}
+                                                <li class="page-item active">
+                                                    <a class="page-link" href="?page={{ i }}">
+                                                        {{ i }}
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if yields.has_next %}
+                                        <li class="page-item active">
+                                            <a class="page-link" href="?page={{ yields.next_page_number }}">
+                                                <i class="fas fa-angle-right"></i>
+                                                <span class="sr-only">
+                                                    {% trans "Next" %}
+                                                </span>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#">
+                                                <i class="fas fa-angle-right"></i>
+                                                <span class="sr-only">{% trans "Next" %}</span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            {% endif %}
+
+                        </nav>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+    <!-- jQuery Datatable js -->
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <!-- Bootstrap Datatable js -->
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#yield_table').DataTable({
+                "language": {
+                    "paginate": {
+                    "previous": '<i class="fas fa-angle-left"></i>',
+                    "next": '<i class="fas fa-angle-right"></i>'
+                    }
+                }
+            });
+            $('#yield_table_filter').hide();
+        });
+    </script>
+    
+    <!--  -->
+    <!-- Uploading Data Modal -->
+    <script>
+        $('#file_input').on('change',function(e){
+            var fileName = e.target.files[0].name;;
+            $(this).next('.custom-file-label').html(fileName);
+        })
+
+        $("#upload_form").submit(function(event) {
+            event.preventDefault(); // Stop default submission
+            let formData =  new FormData(document.querySelector("#upload_form"));
+            formData.append("upload_button", '');
+            $("#progress").show();
+            $.ajax({
+                type: "POST",
+                url:  "{% url 'yield' %}",
+                data: formData, // serializes the form's elements.
+                processData: false,
+                contentType: false,
+                success: function (resp){
+                    $("#upload_success").addClass("show");
+                    $("#upload_error").removeClass("show");
+                    setTimeout(function(){
+                        window.location.reload();
+                    },3000);
+                    $("#progress").delay(2000).hide(0);
+                },
+                error: function (err){
+                    console.log('Got error ');
+                    console.log(err.responseText)
+                    try {
+                        err.responseText = JSON.parse(err.responseText);
+                        if(Array.isArray(err.responseText.error)){
+                            const $ul = $('<ul>', { class: "mylist" })
+                            err.responseText.error.forEach(function(error){
+                                $ul.append($("<li>").append(error))
+                            });
+                            $("#upload_error_text").html($ul);
+                        }
+                        else {
+                            $("#upload_error_text").text(err.responseText.error);
+                        }
+                    } catch(err) {
+                        $("#upload_error_text").text(err.responseText); 
+                    }
+                    $("#upload_error").addClass("show");
+                    $("#progress").delay(2000).hide(0);
+                },
+                xhr: function() {
+                    var xhr = new window.XMLHttpRequest();
+                    xhr.upload.addEventListener("progress", function(evt) {
+                        if (evt.lengthComputable) {
+                            var percentComplete = (evt.loaded / evt.total) * 100;
+                            // Place upload progress bar visibility code here
+                            $("#progressBar")
+                                .css({"width": `${percentComplete}%`})
+                                .attr("aria-valuenow", percentComplete)
+                                .text(`${percentComplete}%`);
+                        }
+                    }, false);
+                    return xhr;
+                },
+            })
+
+        });
+    </script>
+{% endblock javascripts %}

@@ -1,0 +1,180 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load render_bundle from webpack_loader %}
+{% load index %}
+
+{% block title %} Register New User {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="header bg-primary pb-6">
+  <div class="container-fluid">
+      <div class="header-body">
+          <div class="row align-items-center py-4">
+              <div>
+                  <button id="collap_button" class="pr-3 sidenav-toggler sidenav-toggler-dark btn btn-primary"
+                      type="button" data-action="sidenav-pin" data-target="#sidenav-main"><i
+                          class="fas fa-bars"></i></button>&nbsp;&nbsp;&nbsp;<h6
+                      class="h2 text-white d-inline-block mb-0">{% trans "Register New User" %}</h6>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="container  mt--6 pb-5">
+  <!-- Table -->
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-body px-lg-5 py-lg-4">
+          <div class="text-center text-muted mb-4">
+
+            {% if msg %}
+              <small>{{ msg | safe }}</small>
+            {% else %}
+              {% trans "Add new user credentials" %}
+            {% endif %}
+
+          </div>
+
+          {% if not success %}
+
+            <form method="POST" autocomplete="off">
+
+              {% csrf_token %}
+
+              <div class="form-group" autocomplete="off">
+                <div class="input-group input-group-alternative mb-3" autocomplete="off">
+                  <div class="input-group-prepend" autocomplete="off">
+                    <span class="input-group-text form-prepend"><i class="fa fa-user"></i></span>
+                  </div>
+                  {{ form.username }}
+                </div>
+              </div>
+              <span class="text-error errors">{{ form.username.errors }}</span>
+
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text form-prepend"><i class="fa fa-user"></i></span>
+                  </div>
+                  {{ form.first_name }}
+                </div>
+              </div>
+              <span class="text-error errors">{{ form.first_name.errors }}</span>
+
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text form-prepend"><i class="fa fa-user"></i></span>
+                  </div>
+                  {{ form.last_name }}
+                </div>
+              </div>
+              <span class="text-error errors">{{ form.last_name.errors }}</span>
+
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text form-prepend"><i class="ni ni-email-83"></i></span>
+                  </div>
+                  {{ form.email }}
+                </div>
+              </div>
+              <span class="text-error errors">{{ form.email.errors }}</span>
+
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text form-prepend"><i class="fa fa-phone"></i></span>
+                  </div>
+                  {{ form.phone }}
+                </div>
+              </div>
+              <span class="text-error errors">{{ form.phone.errors }}</span>
+
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text form-prepend font-weight-bold">{% trans "Country:" %}</span>
+                  </div>
+                  {{ form.country_id }}
+                </div>
+              </div>
+              <span class="text-error errors">{{ form.country_id.errors }}</span>
+
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text form-prepend font-weight-bold">{% trans "Organization Type:" %}</span>
+                  </div>
+                  {{ form.organization }}
+                </div>
+              </div>
+              <span class="text-error errors">{{ form.organization.errors }}</span>
+
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text form-prepend font-weight-bold">{% trans "Organization Name:" %}</span>
+                  </div>
+                  {{ form.organization_name }}
+                </div>
+              </div>
+              <span class="text-error errors">{{ form.organization_name.errors }}</span>
+
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text form-prepend font-weight-bold">{% trans "Role:" %}</span>
+                  </div>
+                  {{ form.role }}
+                </div>
+              </div>
+              <span class="text-error errors">{{ form.role.errors }}</span>
+
+              <div class="text-center">
+                <button type="submit" class="btn btn-block btn-primary mt-4">{% trans "Save User" %}</button>
+              </div>
+            </form>
+
+          {% endif %}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+  {% render_bundle 'dropdown_filter' %}
+  {% if user.is_authenticated %}
+    <script>
+      var currentLanguage = "{{ request.LANGUAGE_CODE }}";
+      $(document).ready(function () {
+        var email_field = document.getElementById("id_email");
+      });
+    </script>
+  {% else %}
+    <script>
+      var currentLanguage = "{{ request.LANGUAGE_CODE }}";
+      $(document).ready(function () {
+        var email_field = document.getElementById("id_email");
+        email_field.addEventListener("blur", function() {
+        });
+      });
+    </script>
+  {% endif %}
+{% endblock javascripts %}

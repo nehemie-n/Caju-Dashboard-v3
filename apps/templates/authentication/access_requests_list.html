@@ -1,0 +1,163 @@
+{% extends 'layouts/base.html' %}
+{% load i18n %}
+{% load index %}
+
+{% block stylesheets %}
+    <style>
+        .status-circle {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+        }
+
+        .status_active {
+            color: #0eb1af;
+        }
+
+        .status_pending {
+            color: gray;
+        }
+
+        .status_inactive {
+            color: red;
+        }
+    </style>
+{% endblock stylesheets %}
+
+{% block title %} Tables {% endblock title %}
+
+{% block content %}
+
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div>
+                    <button id="collap_button" class="pr-3 sidenav-toggler sidenav-toggler-dark btn btn-primary"
+                        type="button" data-action="sidenav-pin" data-target="#sidenav-main"><i
+                            class="fas fa-bars"></i></button>&nbsp;&nbsp;&nbsp;<h6
+                        class="h2 text-white d-inline-block mb-0">{% trans "Access Requests" %}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <!-- Dark table -->
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header border-0">
+                    <div style="float: left">
+                        <h3 class="mb-0">{% trans "Access Requests" %}</h3>
+                    </div>
+
+                </div>
+                <!-- Light table -->
+                <div class="table-responsive">
+                    <table id="access_requests_list_table" class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col" class="sort">No</th>
+                                <th scope="col" class="sort">{% trans "First Name" %}</th>
+                                <th scope="col" class="sort">{% trans "Last Name"%}</th>
+                                <th scope="col" class="sort">{% trans "Username" %}</th>
+                                <th scope="col" class="sort">{% trans "Email address" %}</th>
+                                <th scope="col" class="sort">{% trans "Phone" %}</th>
+                                <th scope="col" class="sort">{% trans "Organization Type" %}</th>
+                                <th scope="col" class="sort">{% trans "Organization" %}</th>
+                                <th scope="col" class="sort">{% trans "Country" %}</th>
+                                <th scope="col" class="sort">{% trans "Status" %}</th>
+                                <th scope="col" class="sort"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="list">
+            
+                            {% for request in access_requests %}
+                            <tr>
+                                <th scope="row">
+                                    <div class="media align-items-center">
+                                        <div class="media-body">
+                                            <span class="name mb-0 text-sm">{{ forloop.counter }}</span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td>
+                                    {{ request.first_name }}
+                                </td>
+                                <td>
+                                    {{ request.last_name }}
+                                </td>
+                                <td>
+                                    {{ request.username }}
+                                </td>
+                                <td>
+                                    {{ request.email }}
+                                </td>
+                                <td>
+                                    {{ request.phone }}
+                                </td>
+                                <td>
+                                    {{ request.organization }}
+                                </td>
+                                <td>
+                                    {{ request.organization_name }}
+                                </td>
+                                <td>
+                                    {% for country in request.country_id.all %}
+                                        <span>{{country}}</span>
+                                        {% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% if request.status == 0 %}
+                                        <span class="status_pending">Pending</span>
+                                    {% elif request.status == 1 %}
+                                        <span class="status_active">Accepted</span>
+                                    {% else %}
+                                        <span class="status_inactive">Denied</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{% url 'access_request_view' id=request.id %}" class="btn btn-primary">{% trans "View" %}</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+<!-- jQuery Datatable js -->
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<!-- Bootstrap Datatable js -->
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#access_requests_list_table').DataTable({
+            "language": {
+                "paginate": {
+                    "previous": '<i class="fas fa-angle-left"></i>',
+                    "next": '<i class="fas fa-angle-right"></i>'
+                }
+            },
+            search: {
+                return: true
+            }
+        });
+    });
+</script>
+{% endblock javascripts %}

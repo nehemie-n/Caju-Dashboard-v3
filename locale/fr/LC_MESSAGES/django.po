@@ -1,0 +1,2377 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-29 20:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps/authentication/models.py:168
+msgid "username"
+msgstr "Nom d'utilisateur"
+
+#: apps/authentication/models.py:172
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+
+#: apps/authentication/models.py:176
+msgid "A user with that username already exists."
+msgstr ""
+
+#: apps/authentication/utils.py:20 apps/dashboard/models.py:56
+#: apps/dashboard/models.py:122 apps/dashboard/models.py:194
+msgid "Male"
+msgstr "Homme"
+
+#: apps/authentication/utils.py:21 apps/dashboard/models.py:57
+#: apps/dashboard/models.py:123 apps/dashboard/models.py:195
+msgid "Female"
+msgstr "Femme"
+
+#: apps/authentication/utils.py:22 apps/dashboard/models.py:58
+#: apps/dashboard/models.py:124 apps/dashboard/models.py:196
+msgid "Others"
+msgstr "Autre"
+
+#: apps/authentication/views.py:60 apps/authentication/views.py:652
+msgid "Invalid credentials"
+msgstr "Identifiants incorrects"
+
+#: apps/authentication/views.py:155
+msgid "Activate your Cashew Remote Sensing account."
+msgstr "Activez votre compte de Télédétection du cajou."
+
+#: apps/authentication/views.py:178
+msgid "User registration was successfull!"
+msgstr ""
+
+#: apps/authentication/views.py:196 apps/authentication/views.py:202
+#: apps/authentication/views.py:275 apps/authentication/views.py:279
+#: apps/authentication/views.py:581 apps/authentication/views.py:707
+#: apps/authentication/views.py:744 apps/dashboard/views.py:254
+#: apps/dashboard/views.py:461
+msgid "Form is not valid"
+msgstr "Le formulaire n'est pas valide"
+
+#: apps/authentication/views.py:213 apps/authentication/views.py:289
+msgid "An Error has Occurred"
+msgstr ""
+
+#: apps/authentication/views.py:242
+#, python-brace-format
+msgid "New access request from {first_name}."
+msgstr ""
+
+#: apps/authentication/views.py:268
+msgid "Access request sent succesfully, wait for approval!"
+msgstr ""
+
+#: apps/authentication/views.py:380
+msgid "Accepted request for access."
+msgstr ""
+
+#: apps/authentication/views.py:394
+msgid "Denied request for access."
+msgstr "Demande d'accès refusée."
+
+#: apps/authentication/views.py:555
+msgid "Account details updated."
+msgstr ""
+
+#: apps/authentication/views.py:612
+msgid "Account status updated."
+msgstr ""
+
+#: apps/authentication/views.py:673
+msgid "Reset your Password"
+msgstr "Mot de passe oublié"
+
+#: apps/authentication/views.py:701
+#, python-brace-format
+msgid "Please check your {to_email} inbox"
+msgstr ""
+
+#: apps/authentication/views.py:738
+msgid "Password change successful. Now you can"
+msgstr "Changement de mot de passe réussi. Maintenant vous pouvez"
+
+#: apps/authentication/views.py:777
+msgid "A new TNS user registered"
+msgstr ""
+
+#: apps/dashboard/drone_views.py:127
+msgid "Drone Image"
+msgstr "Image du Drone"
+
+#: apps/dashboard/drone_views.py:145
+#: apps/dashboard/layers_builders/prediction.py:38
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:298
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:191
+#: apps/dashboard/maps_builders/public_build_cashew_map.py:148
+msgid "Cashew Growing Areas"
+msgstr "Zones de culture du cajou"
+
+#: apps/dashboard/drone_views.py:166
+msgid "Plantation Shape"
+msgstr "Forme de la plantation"
+
+#: apps/dashboard/drone_views.py:183
+msgid "Pruning recommendations"
+msgstr "Recommandations d'élagage"
+
+#: apps/dashboard/drone_views.py:194 apps/dashboard/drone_views.py:224
+#, fuzzy
+#| msgid "Tree Crowns"
+msgid "Tree Crow Colored"
+msgstr "Corbeau arboricole coloré"
+
+#: apps/dashboard/drone_views.py:213
+msgid "Thinning recommendations"
+msgstr "Recommandations d'éclaircissage"
+
+#: apps/dashboard/drone_views.py:240
+#: apps/dashboard/layers_builders/benin_tree_crowns.py:17
+msgid "Tree Crowns"
+msgstr "Couronnes des Arbres"
+
+#: apps/dashboard/drone_views.py:283
+#: apps/dashboard/layers_builders/benin_tree_tops_density.py:17
+msgid "Tree Tops Density"
+msgstr "Densité des Cimes des Arbres"
+
+#: apps/dashboard/drone_views.py:301
+msgid "Satellite"
+msgstr "Satellite"
+
+#: apps/dashboard/forms.py:188 apps/templates/dashboard/analytics.html:67
+#: apps/templates/dashboard/defective_rate.html:77
+#: apps/templates/dashboard/nut_count.html:77
+#: apps/templates/dashboard/training.html:35
+#: apps/templates/dashboard/training.html:44
+#: apps/templates/dashboard/training.html:53
+msgid "From"
+msgstr "Du"
+
+#: apps/dashboard/forms.py:205 apps/templates/dashboard/analytics.html:69
+#: apps/templates/dashboard/defective_rate.html:79
+#: apps/templates/dashboard/nut_count.html:79
+#: apps/templates/dashboard/training.html:36
+#: apps/templates/dashboard/training.html:45
+#: apps/templates/dashboard/training.html:54
+msgid "To"
+msgstr "Au"
+
+#: apps/dashboard/forms.py:271 apps/dashboard/forms.py:294
+#: apps/dashboard/forms.py:312 apps/dashboard/forms.py:333
+#: apps/dashboard/forms.py:351 apps/dashboard/forms.py:377
+#: apps/dashboard/forms.py:395 apps/dashboard/forms.py:412
+#: apps/dashboard/utils.py:167 apps/dashboard/views.py:532
+msgid "All"
+msgstr "Tous"
+
+#: apps/dashboard/forms.py:272
+msgid "NURSERY NAME"
+msgstr "NOM DE LA PÉPINIÈRE"
+
+#: apps/dashboard/forms.py:273 apps/dashboard/forms.py:354
+msgid "OWNER FIRST NAME"
+msgstr "PRÉNOM DU PROPRIÉTAIRE"
+
+#: apps/dashboard/forms.py:274 apps/dashboard/forms.py:355
+msgid "OWNER LAST NAME"
+msgstr "NOM DE FAMILLE DU PROPRIÉTAIRE"
+
+#: apps/dashboard/forms.py:275
+msgid "NURSERY ADDRESS"
+msgstr "ADRESSE DE LA PÉPINIÈRE"
+
+#: apps/dashboard/forms.py:276 apps/dashboard/forms.py:358
+msgid "COUNTRY"
+msgstr "PAYS"
+
+#: apps/dashboard/forms.py:277 apps/dashboard/forms.py:360
+#: apps/dashboard/forms.py:401
+msgid "COMMUNE"
+msgstr "COMMUNE"
+
+#: apps/dashboard/forms.py:278 apps/dashboard/forms.py:363
+msgid "CURRENT AREA"
+msgstr "ZONE ACTUELLE"
+
+#: apps/dashboard/forms.py:279 apps/dashboard/forms.py:364
+msgid "LATITUDE"
+msgstr "LATITUDE"
+
+#: apps/dashboard/forms.py:280 apps/dashboard/forms.py:365
+msgid "LONGITUDE"
+msgstr "LONGITUDE"
+
+#: apps/dashboard/forms.py:281 apps/dashboard/forms.py:366
+msgid "ALTITUDE"
+msgstr "ALTITUDE"
+
+#: apps/dashboard/forms.py:282
+msgid "PARTNER"
+msgstr "PARTENAIRE"
+
+#: apps/dashboard/forms.py:283
+msgid "NUMBER OF PLANTS"
+msgstr "NOMBRE DE PLANTES"
+
+#: apps/dashboard/forms.py:313 apps/dashboard/forms.py:352
+msgid "PLANTATION NAME"
+msgstr "NOM DE LA PLANTATION"
+
+#: apps/dashboard/forms.py:314
+msgid "TOTAL YIELD KG"
+msgstr "RENDEMENT TOTAL KG"
+
+#: apps/dashboard/forms.py:315
+msgid "TOTAL YIELD PER HA KG"
+msgstr "RENDEMENT TOTAL PAR HA KG"
+
+#: apps/dashboard/forms.py:316
+msgid "TOTAL YIELD PER TREE KG"
+msgstr "RENDEMENT TOTAL PAR ARBRE KG"
+
+#: apps/dashboard/forms.py:317
+msgid "PRODUCT ID"
+msgstr "ID PRODUIT"
+
+#: apps/dashboard/forms.py:318
+msgid "TOTAL NUMBER TREES"
+msgstr "NOMBRE TOTAL D'ARBRES"
+
+#: apps/dashboard/forms.py:319
+msgid "TOTAL SICK TREES"
+msgstr "TOTAL DES ARBRES MALADES"
+
+#: apps/dashboard/forms.py:320
+msgid "TOTAL DEAD TREES"
+msgstr "TOTAL DES ARBRES MORTS"
+
+#: apps/dashboard/forms.py:321
+msgid "TOTAL TREES OUT OF PROD"
+msgstr "TOTAL DES ARBRES HORS PROD"
+
+#: apps/dashboard/forms.py:322
+msgid "YEAR"
+msgstr "ANNÉE"
+
+#: apps/dashboard/forms.py:353
+msgid "PLANTATION CODE"
+msgstr "CODE DE LA PLANTATION"
+
+#: apps/dashboard/forms.py:356
+msgid "OWNER GENDER"
+msgstr "SEXE DU PROPRIÉTAIRE"
+
+#: apps/dashboard/forms.py:357
+msgid "TOTAL TREES"
+msgstr "TOTAL DES ARBRES"
+
+#: apps/dashboard/forms.py:359 apps/dashboard/forms.py:400
+msgid "DEPARTMENT"
+msgstr "DÉPARTEMENT"
+
+#: apps/dashboard/forms.py:361
+msgid "ARRONDISSEMENT"
+msgstr "ARRONDISSEMENT"
+
+#: apps/dashboard/forms.py:362
+msgid "village"
+msgstr "Village"
+
+#: apps/dashboard/forms.py:396
+msgid "MODULE NAME"
+msgstr "NOM DU MODULE"
+
+#: apps/dashboard/forms.py:397
+msgid "TRAINER FIRST NAME"
+msgstr "PRÉNOM DU FORMATEUR"
+
+#: apps/dashboard/forms.py:398
+msgid "TRAINER LAST NAME"
+msgstr "NOM DE FAMILLE DU FORMATEUR"
+
+#: apps/dashboard/forms.py:399
+msgid "NUMBER OF PARTICIPANT"
+msgstr "NOMBRE DE PARTICIPANTS"
+
+#: apps/dashboard/layers_builders/benin_colored_communes.py:90
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:161
+msgid "Communes Training Recommendations"
+msgstr "Communes Recommandations de formation"
+
+#: apps/dashboard/layers_builders/benin_colored_departments.py:145
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:172
+msgid "Departments Training Recommendations"
+msgstr "Recommandations de formation des départements"
+
+#: apps/dashboard/layers_builders/benin_commune.py:118
+#: apps/dashboard/layers_builders/benin_commune.py:195
+#: apps/dashboard/layers_builders/benin_department.py:124
+#: apps/dashboard/layers_builders/benin_department.py:167
+#: apps/dashboard/layers_builders/benin_republic.py:108
+#: apps/dashboard/layers_builders/benin_republic.py:307
+msgid "TNS Survey"
+msgstr "Enquête de TNS"
+
+#: apps/dashboard/layers_builders/benin_commune.py:119
+#: apps/dashboard/layers_builders/benin_department.py:125
+#: apps/dashboard/layers_builders/benin_republic.py:308
+msgid "Nut Count Average"
+msgstr "Pays"
+
+#: apps/dashboard/layers_builders/benin_commune.py:120
+#: apps/dashboard/layers_builders/benin_department.py:126
+#: apps/dashboard/layers_builders/benin_republic.py:309
+msgid "Defective Rate Average"
+msgstr "Taux de défectuosité"
+
+#: apps/dashboard/layers_builders/benin_commune.py:121
+#: apps/dashboard/layers_builders/benin_department.py:127
+#: apps/dashboard/layers_builders/benin_republic.py:121
+#: apps/dashboard/layers_builders/benin_republic.py:310
+msgid "KOR Average"
+msgstr "Moyenne de KOR"
+
+#: apps/dashboard/layers_builders/benin_commune.py:151
+#, fuzzy
+#| msgid "Nursery Information"
+msgid "Nurseries recommandation informations"
+msgstr "Informations sur la pépinière"
+
+#: apps/dashboard/layers_builders/benin_commune.py:153
+msgid "Plants per nursery"
+msgstr ""
+
+#: apps/dashboard/layers_builders/benin_commune.py:155
+#, fuzzy
+#| msgid "Total Number of Trees"
+msgid "Total number of recommended plants"
+msgstr "Nombre total d'arbres"
+
+#: apps/dashboard/layers_builders/benin_commune.py:156
+msgid "Existing plants"
+msgstr ""
+
+#: apps/dashboard/layers_builders/benin_commune.py:157
+#, fuzzy
+#| msgid "Nurseries"
+msgid "Missing nurseries"
+msgstr "Pépinières"
+
+#: apps/dashboard/layers_builders/benin_commune.py:187
+#: apps/dashboard/layers_builders/benin_republic.py:98
+#: apps/dashboard/layers_builders/benin_republic.py:99
+msgid "Departments Cashew Tree Cover Statistics In"
+msgstr "Statistiques sur la couverture des anacardiers dans les départements"
+
+#: apps/dashboard/layers_builders/benin_commune.py:188
+#: apps/dashboard/layers_builders/benin_department.py:158
+#: apps/dashboard/layers_builders/benin_republic.py:100
+msgid "Active Trees"
+msgstr "Arbres Actifs"
+
+#: apps/dashboard/layers_builders/benin_commune.py:189
+#: apps/dashboard/layers_builders/benin_department.py:159
+#: apps/dashboard/layers_builders/benin_republic.py:101
+#: apps/templates/dashboard/yield.html:65
+msgid "Sick Trees"
+msgstr "Arbres Malades"
+
+#: apps/dashboard/layers_builders/benin_commune.py:190
+#: apps/dashboard/layers_builders/benin_department.py:160
+#: apps/dashboard/layers_builders/benin_republic.py:102
+#: apps/templates/dashboard/yield.html:66
+msgid "Dead Trees"
+msgstr "Arbres Morts"
+
+#: apps/dashboard/layers_builders/benin_commune.py:191
+#: apps/dashboard/layers_builders/benin_department.py:161
+#: apps/dashboard/layers_builders/benin_republic.py:103
+msgid "Out of Production Trees"
+msgstr "Arbres Hors Production"
+
+#: apps/dashboard/layers_builders/benin_commune.py:192
+#: apps/dashboard/layers_builders/benin_department.py:162
+#: apps/dashboard/layers_builders/benin_republic.py:104
+msgid "Cashew Trees Status in"
+msgstr "Statut des Anacardiers en"
+
+#: apps/dashboard/layers_builders/benin_commune.py:193
+#: apps/dashboard/layers_builders/benin_republic.py:105
+msgid "is ranked"
+msgstr "est classé"
+
+#: apps/dashboard/layers_builders/benin_commune.py:194
+#: apps/dashboard/layers_builders/benin_department.py:123
+#: apps/dashboard/layers_builders/benin_department.py:166
+#: apps/dashboard/layers_builders/benin_district.py:48
+#: apps/dashboard/layers_builders/benin_republic.py:107
+#: apps/dashboard/layers_builders/benin_republic.py:306
+#, fuzzy
+#| msgid "Satellite Estimate"
+msgid "Satellite Estimation"
+msgstr "Estimation satellite"
+
+#: apps/dashboard/layers_builders/benin_commune.py:196
+#: apps/dashboard/layers_builders/benin_department.py:164
+msgid "In 2020, "
+msgstr ""
+
+#: apps/dashboard/layers_builders/benin_commune.py:199
+#: apps/dashboard/layers_builders/benin_department.py:170
+#: apps/dashboard/layers_builders/benin_republic.py:111
+msgid "Total Cashew Yield (kg)"
+msgstr "Rendement Total des Noix de Cajou (kg)"
+
+#: apps/dashboard/layers_builders/benin_commune.py:200
+#: apps/dashboard/layers_builders/benin_department.py:171
+#: apps/dashboard/layers_builders/benin_district.py:51
+#: apps/dashboard/layers_builders/benin_republic.py:112
+msgid "Total Area (ha)"
+msgstr "Superficie Totale (ha)"
+
+#: apps/dashboard/layers_builders/benin_commune.py:201
+#: apps/dashboard/layers_builders/benin_department.py:172
+#: apps/dashboard/layers_builders/benin_district.py:52
+#: apps/dashboard/layers_builders/benin_republic.py:113
+msgid "Cashew Tree Cover (ha)"
+msgstr "Couverture de l'Anacardier (ha)"
+
+#: apps/dashboard/layers_builders/benin_commune.py:202
+#: apps/dashboard/layers_builders/benin_department.py:173
+#: apps/dashboard/layers_builders/benin_district.py:53
+#: apps/dashboard/layers_builders/benin_republic.py:114
+#, fuzzy
+#| msgid "Total Area (ha)"
+msgid "Protected Area (ha)"
+msgstr "Superficie Totale (ha)"
+
+#: apps/dashboard/layers_builders/benin_commune.py:204
+#: apps/dashboard/layers_builders/benin_department.py:175
+#: apps/dashboard/layers_builders/benin_district.py:55
+#: apps/dashboard/layers_builders/benin_republic.py:116
+#, fuzzy
+#| msgid "Cashew Tree Cover (ha)"
+msgid "Cashew Tree Cover Within Protected Area (ha)"
+msgstr "Couverture de l'Anacardier (ha)"
+
+#: apps/dashboard/layers_builders/benin_commune.py:206
+#: apps/dashboard/layers_builders/benin_department.py:177
+#: apps/dashboard/layers_builders/benin_republic.py:118
+msgid "Yield/Hectare (kg/ha)"
+msgstr "Rendement/Hectare (kg/ha)"
+
+#: apps/dashboard/layers_builders/benin_commune.py:207
+#: apps/dashboard/layers_builders/benin_department.py:178
+#: apps/dashboard/layers_builders/benin_plantations.py:197
+#: apps/dashboard/layers_builders/benin_republic.py:119
+msgid "Yield per Tree (kg/tree)"
+msgstr "Rendement par Arbre (kg/arbre)"
+
+#: apps/dashboard/layers_builders/benin_commune.py:208
+#: apps/dashboard/layers_builders/benin_department.py:179
+#: apps/dashboard/layers_builders/benin_plantations.py:196
+#: apps/dashboard/layers_builders/benin_republic.py:120
+msgid "Number of Trees"
+msgstr "Nombre d'arbres"
+
+#: apps/dashboard/layers_builders/benin_commune.py:209
+#: apps/dashboard/layers_builders/benin_department.py:180
+#: apps/dashboard/layers_builders/benin_plantations.py:208
+#: apps/dashboard/layers_builders/benin_republic.py:123
+msgid "Source: TNS/BeninCaju Yield Surveys 2020"
+msgstr "Source : Enquêtes de rendement TNS/BéninCaju 2020"
+
+#: apps/dashboard/layers_builders/benin_commune.py:211
+#, fuzzy, python-brace-format
+#| msgid ""
+#| "among Benin communes in terms of total cashew yield according to the TNS "
+#| "Yield Survey"
+msgid ""
+"among {country.country_name} {country.level2_name} in terms of total cashew "
+"yield according to the TNS Yield Survey"
+msgstr ""
+"parmi les communes du Bénin en termes de rendement total en anacarde selon "
+"le TNSl'enquête de rendement"
+
+#: apps/dashboard/layers_builders/benin_commune.py:213
+#: apps/dashboard/layers_builders/benin_department.py:190
+#: apps/dashboard/layers_builders/benin_district.py:57
+#: apps/dashboard/layers_builders/benin_protected_areas.py:60
+#: apps/dashboard/layers_builders/benin_republic.py:124
+#: apps/dashboard/layers_builders/deforestation_layer.py:43
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:305
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:199
+msgid "Deforested Area (2021 - 2022) (ha)"
+msgstr "Zone Déboisée (2021 - 2022) (ha)"
+
+#: apps/dashboard/layers_builders/benin_commune.py:214
+#: apps/dashboard/layers_builders/benin_department.py:191
+#: apps/dashboard/layers_builders/benin_district.py:58
+#: apps/dashboard/layers_builders/benin_protected_areas.py:61
+#: apps/dashboard/layers_builders/benin_republic.py:125
+#: apps/dashboard/layers_builders/deforestation_layer.py:52
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:312
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:207
+msgid "Afforested Area (2000 - 2012) (ha)"
+msgstr "Zone Boisée (2000 - 2012) (ha)"
+
+#: apps/dashboard/layers_builders/benin_commune.py:1017
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:184
+#, python-brace-format
+msgid "{country.country_name} {country.level2_name}"
+msgstr ""
+
+#: apps/dashboard/layers_builders/benin_department.py:163
+#, fuzzy
+#| msgid "is ranked"
+msgid " is ranked"
+msgstr "est classé"
+
+#: apps/dashboard/layers_builders/benin_department.py:182
+msgid "Predicted Cashew Tree Cover Communes Statistics In"
+msgstr ""
+"Statistiques sur la couverture prévue des anacardiers dans les communes en "
+
+#: apps/dashboard/layers_builders/benin_department.py:185
+#, fuzzy, python-brace-format
+#| msgid ""
+#| "among Benin communes in terms of total cashew yield according to the TNS "
+#| "Yield Survey"
+msgid ""
+"among {country.country_name} {country.level1_name} in terms of total cashew "
+"yield according to the TNS Yield Survey"
+msgstr ""
+"parmi les communes du Bénin en termes de rendement total en anacarde selon "
+"le TNSl'enquête de rendement"
+
+#: apps/dashboard/layers_builders/benin_department.py:188
+#, fuzzy, python-brace-format
+#| msgid ""
+#| "among Benin communes in terms of total cashew yield according to the TNS "
+#| "Yield Survey"
+msgid ""
+"among {country.country_name} {country.level1_name} in terms of total cashew "
+"yield according to the TNS Prediction Algorithm"
+msgstr ""
+"parmi les communes du Bénin en termes de rendement total en anacarde selon "
+"le TNSl'enquête de rendement"
+
+#: apps/dashboard/layers_builders/benin_department.py:717
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:196
+#, python-brace-format
+msgid "{country.country_name} {country.level1_name}"
+msgstr ""
+
+#: apps/dashboard/layers_builders/benin_district.py:256
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:207
+#, python-brace-format
+msgid "{country.country_name} {country.level3_name}"
+msgstr ""
+
+#: apps/dashboard/layers_builders/benin_plantations.py:187
+msgid "Plantation Owner"
+msgstr "Propriétaire de plantation"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:188
+msgid "Plantation ID"
+msgstr "ID de la plantation"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:189
+#: apps/dashboard/views.py:983 apps/dashboard/views.py:1048
+#: apps/templates/dashboard/plantations.html:68
+msgid "Village"
+msgstr "Village"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:190
+msgid "Satellite Estimate"
+msgstr "Estimation satellite"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:191
+msgid "2020 Yield Survey"
+msgstr "Enquête de rendement 2020"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:192
+msgid "Cashew Yield (kg)"
+msgstr "Rendement de la noix de cajou (kg)"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:193
+msgid "Plantation Size (ha)"
+msgstr "Taille de la plantation (ha)"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:194
+#: apps/dashboard/layers_builders/benin_plantations.py:204
+msgid "Cashew Surface Area (ha)"
+msgstr "Superficie Cajou (ha)"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:195
+msgid "Yield Per Hectare (kg/ha)"
+msgstr "Rendement par hectare (kg/ha)"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:199
+msgid ""
+"Average Surface Area and Cashew Yield Information for Plantations in"
+"Republic"
+msgstr ""
+"Informations sur la superficie moyenne et le rendement de la noix de cajou "
+"pour les plantations en République du Bénin"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:201
+msgid "Number of Farms"
+msgstr "Nombre de fermes"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:202
+msgid "Total Plantation Yield (kg)"
+msgstr "Rendement total de la plantation (kg)"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:203
+msgid "Total Plantation Area (ha)"
+msgstr "Superficie totale des plantations (ha)"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:205
+msgid "Average Yield Per Hectare (kg/ha)"
+msgstr "Rendement moyen par hectare (kg/ha)"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:206
+msgid "Total Number of Trees"
+msgstr "Nombre total d'arbres"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:207
+msgid "Average Yield per Tree (kg/tree)"
+msgstr "Rendement moyen par arbre (kg/arbre)"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:209
+msgid "View Drone Image"
+msgstr "Voir l'image du drone"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:210
+msgid "Unknown"
+msgstr ""
+
+#: apps/dashboard/layers_builders/benin_plantations.py:211
+msgid "Training Recommendations"
+msgstr ""
+
+#: apps/dashboard/layers_builders/benin_plantations.py:212
+msgid "Recommended GAP"
+msgstr ""
+
+#: apps/dashboard/layers_builders/benin_plantations.py:213
+msgid "Top walking"
+msgstr ""
+
+#: apps/dashboard/layers_builders/benin_plantations.py:214
+msgid "Thinning"
+msgstr ""
+
+#: apps/dashboard/layers_builders/benin_plantations.py:215
+msgid "Gap filling"
+msgstr ""
+
+#: apps/dashboard/layers_builders/benin_plantations.py:216
+#, fuzzy
+#| msgid "Plantation code"
+msgid "Planting More"
+msgstr "Code de plantation"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:648
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:221
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:111
+#: apps/dashboard/maps_builders/public_build_cashew_map.py:78
+msgid "Plantation Locations"
+msgstr "Emplacements des plantations"
+
+#: apps/dashboard/layers_builders/benin_plantations.py:652
+msgid "Benin Plantations"
+msgstr "Plantations du Bénin"
+
+#: apps/dashboard/layers_builders/benin_protected_areas.py:321
+#, python-brace-format
+msgid "{country} Protected Areas"
+msgstr ""
+
+#: apps/dashboard/layers_builders/benin_republic.py:106
+msgid "globally in terms of total cashew yield"
+msgstr "à l'échelle mondiale en termes de rendement total de la noix de cajou"
+
+#: apps/dashboard/layers_builders/benin_republic.py:122
+msgid "9th"
+msgstr "9ème"
+
+#: apps/dashboard/layers_builders/benin_republic.py:139
+#, python-brace-format
+msgid "{country.country_name}"
+msgstr ""
+
+#: apps/dashboard/layers_builders/benin_republic.py:534
+#: apps/dashboard/layers_builders/benin_republic.py:538
+#, python-brace-format
+msgid "{country} Republic"
+msgstr ""
+
+#: apps/dashboard/layers_builders/caju_density.py:40
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:290
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:182
+msgid "Tree Density Satellite Estimation"
+msgstr "Densité des arbres Estimation par satellite"
+
+#: apps/dashboard/layers_builders/nursery_information.py:43
+msgid "Commune Name"
+msgstr "Nom de la commune"
+
+#: apps/dashboard/layers_builders/nursery_information.py:44
+msgid "Nursery Owner"
+msgstr "Propriétaire de pépinière"
+
+#: apps/dashboard/layers_builders/nursery_information.py:45
+msgid "Nursery Area (ha)"
+msgstr "Superficie de la pépinière (ha)"
+
+#: apps/dashboard/layers_builders/nursery_information.py:46
+#: apps/dashboard/views.py:1203 apps/dashboard/views.py:1266
+#: apps/templates/dashboard/nurseries.html:71
+msgid "Number of Plants"
+msgstr "Nombre de plantes"
+
+#: apps/dashboard/layers_builders/nursery_information.py:77
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:263
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:157
+#: apps/dashboard/maps_builders/public_build_cashew_map.py:124
+msgid "Nursery Information"
+msgstr "Informations sur la pépinière"
+
+#: apps/dashboard/layers_builders/qar_informations.py:8
+msgid "Region"
+msgstr "Inscription"
+
+#: apps/dashboard/layers_builders/qar_informations.py:9
+msgid "Site"
+msgstr "Site"
+
+#: apps/dashboard/layers_builders/qar_informations.py:10
+#: apps/templates/dashboard/analytics.html:15
+#: apps/templates/includes/sidenav.html:257
+msgid "KOR"
+msgstr "KOR"
+
+#: apps/dashboard/layers_builders/qar_informations.py:11
+#: apps/templates/dashboard/nut_count.html:20
+#: apps/templates/includes/sidenav.html:273
+msgid "Nut Count"
+msgstr "Nombre de noix"
+
+#: apps/dashboard/layers_builders/qar_informations.py:12
+#: apps/templates/includes/sidenav.html:290
+msgid "Defective Rate"
+msgstr "Taux de défectuosité"
+
+#: apps/dashboard/layers_builders/qar_informations.py:68
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:272
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:165
+#: apps/dashboard/maps_builders/public_build_cashew_map.py:132
+msgid "Warehouse Location"
+msgstr "Emplacement de l'entrepôt"
+
+#: apps/dashboard/layers_builders/training_informations.py:8
+#: apps/dashboard/views.py:980 apps/dashboard/views.py:1045
+#: apps/dashboard/views.py:1612 apps/dashboard/views.py:1695
+#: apps/templates/dashboard/analytics.html:33
+#: apps/templates/dashboard/defective_rate.html:41
+#: apps/templates/dashboard/nut_count.html:41
+#: apps/templates/dashboard/plantations.html:65
+#: apps/templates/dashboard/shipment.html:59
+#: apps/templates/dashboard/training.html:101
+msgid "Department"
+msgstr "département"
+
+#: apps/dashboard/layers_builders/training_informations.py:9
+#: apps/dashboard/views.py:981 apps/dashboard/views.py:1046
+#: apps/dashboard/views.py:1197 apps/dashboard/views.py:1260
+#: apps/dashboard/views.py:1613 apps/dashboard/views.py:1696
+#: apps/templates/dashboard/analytics.html:33
+#: apps/templates/dashboard/defective_rate.html:42
+#: apps/templates/dashboard/nurseries.html:65
+#: apps/templates/dashboard/nut_count.html:42
+#: apps/templates/dashboard/plantations.html:66
+#: apps/templates/dashboard/shipment.html:60
+#: apps/templates/dashboard/training.html:102
+msgid "Commune"
+msgstr "commune"
+
+#: apps/dashboard/layers_builders/training_informations.py:10
+msgid "Trainer"
+msgstr "Formateur"
+
+#: apps/dashboard/layers_builders/training_informations.py:11
+#: apps/templates/authentication/access_requests_list.html:74
+#: apps/templates/authentication/user_list.html:69
+msgid "Organization"
+msgstr "Organisation"
+
+#: apps/dashboard/layers_builders/training_informations.py:12
+msgid "Topic"
+msgstr "Sujet"
+
+#: apps/dashboard/layers_builders/training_informations.py:13
+msgid "Category"
+msgstr "Catégorie"
+
+#: apps/dashboard/layers_builders/training_informations.py:14
+msgid "Number of Participants"
+msgstr "Nombre de Participants"
+
+#: apps/dashboard/layers_builders/training_informations.py:15
+msgid "Training DateTime"
+msgstr "Date de la formation "
+
+#: apps/dashboard/layers_builders/training_informations.py:81
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:281
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:173
+#: apps/dashboard/maps_builders/public_build_cashew_map.py:140
+msgid "Training Information"
+msgstr "Informations sur la formation"
+
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:80
+#: apps/templates/dashboard/login.html:27
+#: apps/templates/dashboard/register.html:28
+msgid "Google"
+msgstr "Google"
+
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:90
+msgid "Google Satellite"
+msgstr "Satellite Google"
+
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:101
+msgid "Mapbox Satellite"
+msgstr "Mapbox Satellite"
+
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:219
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:109
+#: apps/dashboard/maps_builders/public_build_cashew_map.py:76
+#: apps/templates/dashboard/plantations.html:14
+#: apps/templates/includes/sidenav.html:182
+msgid "Plantations"
+msgstr "Plantations"
+
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:233
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:125
+#: apps/dashboard/maps_builders/public_build_cashew_map.py:92
+msgid "Protected Areas"
+msgstr "Zones Protégées"
+
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:242
+#, python-brace-format
+msgid "{country.country_name} Republic"
+msgstr ""
+
+#: apps/dashboard/maps_builders/default_build_cashew_map.py:251
+#, python-brace-format
+msgid "{country.country_name}Republic"
+msgstr ""
+
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:47
+msgid "Training Recommendations Level 2"
+msgstr "Recommandations de formation Niveau 2"
+
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:59
+msgid "Training Recommendations Level 1"
+msgstr "Recommandations de formation Niveau 1"
+
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:72
+#: apps/dashboard/maps_builders/public_build_cashew_map.py:39
+msgid "Administrative Level 2"
+msgstr "Niveau Administratif 2"
+
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:84
+#: apps/dashboard/maps_builders/public_build_cashew_map.py:51
+msgid "Administrative Level 1"
+msgstr "Niveau Administratif 1"
+
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:96
+#: apps/dashboard/maps_builders/public_build_cashew_map.py:63
+msgid "Administrative Level 3"
+msgstr "Niveau Administratif 3"
+
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:135
+#: apps/dashboard/maps_builders/public_build_cashew_map.py:102
+msgid "Administrative Level 0"
+msgstr "Niveau administratif 0"
+
+#: apps/dashboard/maps_builders/generic_build_cashew_map.py:145
+#: apps/dashboard/maps_builders/public_build_cashew_map.py:112
+msgid "Administrative Boundaries Level 0"
+msgstr "Frontières administratives Niveau 0"
+
+#: apps/dashboard/models.py:373
+msgid "OTHER"
+msgstr "AUTRES"
+
+#: apps/dashboard/utils.py:140
+msgid "Select Department"
+msgstr "Sélectionner le département"
+
+#: apps/dashboard/utils.py:157
+#, fuzzy
+#| msgid "Commune"
+msgid "Select Commune"
+msgstr "commune"
+
+#: apps/dashboard/views.py:249
+msgid "Organization created - please <a href=\"/register\">register user</a>."
+msgstr ""
+"Organisation créée - veuillez <a href=\"/register\">enregistrer "
+"l'utilisateur</a>."
+
+#: apps/dashboard/views.py:410
+msgid "New request"
+msgstr "Mauvaise requête"
+
+#: apps/dashboard/views.py:746 apps/dashboard/views.py:805
+#: apps/dashboard/views.py:973 apps/dashboard/views.py:1038
+msgid "Plantation name"
+msgstr "Nom de la plantation"
+
+#: apps/dashboard/views.py:747 apps/dashboard/views.py:806
+msgid "Product id"
+msgstr "Identifiant du produit"
+
+#: apps/dashboard/views.py:748 apps/dashboard/views.py:807
+#: apps/templates/dashboard/yield.html:60
+msgid "Year"
+msgstr "An"
+
+#: apps/dashboard/views.py:749 apps/dashboard/views.py:808
+msgid "Total number trees"
+msgstr "Nombre total d'arbres"
+
+#: apps/dashboard/views.py:750 apps/dashboard/views.py:809
+msgid "Total yield kg"
+msgstr "Rendement Total des Noix de Cajou (kg)"
+
+#: apps/dashboard/views.py:751 apps/dashboard/views.py:810
+msgid "Total yield per ha kg"
+msgstr "Rendement par Arbre (kg/arbre)"
+
+#: apps/dashboard/views.py:752 apps/dashboard/views.py:811
+msgid "Total yield per tree kg"
+msgstr "Rendement par Arbre (kg/arbre)"
+
+#: apps/dashboard/views.py:753 apps/dashboard/views.py:812
+msgid "Total sick trees"
+msgstr "Nombre total d'arbres"
+
+#: apps/dashboard/views.py:754 apps/dashboard/views.py:813
+msgid "Total dead trees"
+msgstr "Nombre total d'arbres"
+
+#: apps/dashboard/views.py:755 apps/dashboard/views.py:814
+msgid "Total trees out of prod"
+msgstr "Total des arbres hors prod"
+
+#: apps/dashboard/views.py:974 apps/dashboard/views.py:1039
+msgid "Plantation code"
+msgstr "Code de plantation"
+
+#: apps/dashboard/views.py:975 apps/dashboard/views.py:1040
+msgid "Owner first name"
+msgstr "Prénom du propriétaire"
+
+#: apps/dashboard/views.py:976 apps/dashboard/views.py:1041
+msgid "Owner last name"
+msgstr "Nom du propriétaire"
+
+#: apps/dashboard/views.py:977 apps/dashboard/views.py:1042
+msgid "Owner gender"
+msgstr "Adresse du propriétaire"
+
+#: apps/dashboard/views.py:978 apps/dashboard/views.py:1043
+msgid "Total trees"
+msgstr "Nombre total d'arbres"
+
+#: apps/dashboard/views.py:979 apps/dashboard/views.py:1044
+#: apps/dashboard/views.py:1196 apps/dashboard/views.py:1259
+#: apps/templates/authentication/access_request_view.html:117
+#: apps/templates/authentication/access_requests_list.html:75
+#: apps/templates/authentication/modify_user.html:124
+#: apps/templates/authentication/user_list.html:70
+#: apps/templates/dashboard/analytics.html:18
+#: apps/templates/dashboard/defective_rate.html:24
+#: apps/templates/dashboard/nurseries.html:64
+#: apps/templates/dashboard/nut_count.html:24
+#: apps/templates/dashboard/plantations.html:64
+#: apps/templates/dashboard/profile.html:176
+msgid "Country"
+msgstr "Pays"
+
+#: apps/dashboard/views.py:982 apps/dashboard/views.py:1047
+#: apps/templates/dashboard/plantations.html:67
+msgid "Arrondissement"
+msgstr "Arrondissement"
+
+#: apps/dashboard/views.py:984 apps/dashboard/views.py:1049
+msgid "Current area"
+msgstr "Zone actuelle"
+
+#: apps/dashboard/views.py:985 apps/dashboard/views.py:1050
+#: apps/dashboard/views.py:1199 apps/dashboard/views.py:1262
+#: apps/templates/dashboard/nurseries.html:67
+#: apps/templates/dashboard/plantations.html:70
+msgid "Latitude"
+msgstr "Latitude"
+
+#: apps/dashboard/views.py:986 apps/dashboard/views.py:1051
+#: apps/dashboard/views.py:1200 apps/dashboard/views.py:1263
+#: apps/templates/dashboard/nurseries.html:68
+#: apps/templates/dashboard/plantations.html:71
+msgid "Longitude"
+msgstr "Longitude"
+
+#: apps/dashboard/views.py:987 apps/dashboard/views.py:1052
+#: apps/dashboard/views.py:1201 apps/dashboard/views.py:1264
+#: apps/templates/dashboard/nurseries.html:69
+#: apps/templates/dashboard/plantations.html:72
+msgid "Altitude"
+msgstr "Altitude"
+
+#: apps/dashboard/views.py:1192 apps/dashboard/views.py:1255
+#: apps/templates/dashboard/nurseries.html:60
+msgid "Nursery Name"
+msgstr "Nom de la Pépinière"
+
+#: apps/dashboard/views.py:1193 apps/dashboard/views.py:1256
+#: apps/templates/dashboard/nurseries.html:61
+msgid "Owner First Name"
+msgstr "Prénom du propriétaire"
+
+#: apps/dashboard/views.py:1194 apps/dashboard/views.py:1257
+#: apps/templates/dashboard/nurseries.html:62
+msgid "Owner Last Name"
+msgstr "Nom de famille du propriétaire"
+
+#: apps/dashboard/views.py:1195 apps/dashboard/views.py:1258
+#: apps/templates/dashboard/nurseries.html:63
+msgid "Nursery Address"
+msgstr "Adresse de la Pépinière"
+
+#: apps/dashboard/views.py:1198 apps/dashboard/views.py:1261
+#: apps/templates/dashboard/nurseries.html:66
+msgid "Current Area"
+msgstr "Zone actuelle"
+
+#: apps/dashboard/views.py:1202 apps/dashboard/views.py:1265
+#: apps/templates/dashboard/nurseries.html:70
+msgid "Partner"
+msgstr "Partenaire"
+
+#: apps/dashboard/views.py:1604 apps/dashboard/views.py:1687
+#: apps/templates/dashboard/training.html:93
+msgid "Module Name"
+msgstr "Nom du module"
+
+#: apps/dashboard/views.py:1605 apps/dashboard/views.py:1688
+#: apps/templates/dashboard/training.html:94
+msgid "Trainer First Name"
+msgstr "Prénom du formateur"
+
+#: apps/dashboard/views.py:1606 apps/dashboard/views.py:1689
+#: apps/templates/dashboard/training.html:95
+msgid "Trainer Last Name"
+msgstr "Nom du formateur"
+
+#: apps/dashboard/views.py:1607 apps/dashboard/views.py:1690
+#: apps/templates/dashboard/training.html:96
+msgid "Trainer Organization"
+msgstr "Organisation des formateurs"
+
+#: apps/dashboard/views.py:1608 apps/dashboard/views.py:1691
+#: apps/templates/dashboard/training.html:97
+msgid "Date"
+msgstr ""
+
+#: apps/dashboard/views.py:1609 apps/dashboard/views.py:1692
+#: apps/templates/dashboard/training.html:98
+msgid "Start Time"
+msgstr ""
+
+#: apps/dashboard/views.py:1610 apps/dashboard/views.py:1693
+#: apps/templates/dashboard/training.html:99
+msgid "End Time"
+msgstr ""
+
+#: apps/dashboard/views.py:1611 apps/dashboard/views.py:1694
+#: apps/templates/dashboard/training.html:100
+msgid "Number of Participant"
+msgstr "Nombre de participants"
+
+#: apps/dashboard/views.py:1614 apps/dashboard/views.py:1697
+#: apps/templates/dashboard/training.html:103
+msgid "Duration"
+msgstr "La durée"
+
+#: apps/dashboard/views.py:1810 apps/templates/dashboard/analytics.html:63
+msgid "KOR Graph against date period"
+msgstr "Graphique de KOR par rapport à la période"
+
+#: apps/dashboard/views.py:1850 apps/dashboard/views.py:1857
+#: apps/dashboard/views.py:1865 apps/dashboard/views.py:1909
+#: apps/dashboard/views.py:2023 apps/dashboard/views.py:2029
+#: apps/dashboard/views.py:2177 apps/dashboard/views.py:2184
+msgid "all"
+msgstr "tous"
+
+#: apps/dashboard/views.py:1982
+msgid "Nut count Graph against date period"
+msgstr "Moyenne du nombre de noix par rapport à la période"
+
+#: apps/dashboard/views.py:2139
+msgid "Defective rate Graph against date period"
+msgstr "Moyenne du taux de défectuosité par rapport à la période"
+
+#: apps/templates/authentication/acc_active_email.html:112
+msgid ""
+"We are thrilled to have you here! Get ready to dive into your new account."
+msgstr ""
+"Nous sommes ravis de vous avoir ici! Préparez-vous à plonger dans votre "
+"nouveau compte."
+
+#: apps/templates/authentication/acc_active_email.html:130
+msgid "Welcome"
+msgstr "Bienvenue"
+
+#: apps/templates/authentication/acc_active_email.html:144
+msgid ""
+"We are excited to have you get started. First, you need to confirm your "
+"account. Just press the button below"
+msgstr ""
+"Nous sommes ravis que vous commenciez. Tout d'abord, vous devez confirmer "
+"votre compte. Appuyez simplement sur le bouton ci-dessous"
+
+#: apps/templates/authentication/acc_active_email.html:168
+msgid "Confirm Account"
+msgstr "Confirmer le compte"
+
+#: apps/templates/authentication/acc_active_email.html:181
+#: apps/templates/authentication/password_reset_email.html:187
+#: apps/templates/authentication/user_request_email.html:216
+msgid ""
+"If that does not work, copy and paste the following link in your browser:"
+msgstr ""
+"Si cela ne fonctionne pas, copiez et collez le lien suivant dans votre "
+"navigateur :"
+
+#: apps/templates/authentication/acc_active_email.html:197
+#: apps/templates/authentication/access_denied_email.html:156
+#: apps/templates/authentication/access_granted_email.html:203
+#: apps/templates/authentication/access_request_email.html:200
+#: apps/templates/authentication/password_reset_email.html:205
+msgid ""
+"If you have any questions, just reply to this email we are always happy to "
+"help out."
+msgstr ""
+"Si vous avez des questions, répondez simplement à cet e-mail, nous serons "
+"toujours ravis de vous aider."
+
+#: apps/templates/authentication/acc_active_email.html:203
+msgid "Cheers"
+msgstr "Acclamations"
+
+#: apps/templates/authentication/acc_active_email.html:203
+msgid "Technoserve Team"
+msgstr "Équipe Technoserve"
+
+#: apps/templates/authentication/acc_active_email.html:215
+#: apps/templates/authentication/access_denied_email.html:175
+#: apps/templates/authentication/access_granted_email.html:222
+#: apps/templates/authentication/access_request_email.html:219
+#: apps/templates/authentication/password_reset_email.html:224
+msgid "Need more help?"
+msgstr "Besoin d'aide?"
+
+#: apps/templates/authentication/acc_active_email.html:217
+#: apps/templates/authentication/access_denied_email.html:177
+#: apps/templates/authentication/access_granted_email.html:224
+#: apps/templates/authentication/access_request_email.html:221
+#: apps/templates/authentication/password_reset_email.html:226
+msgid "We are here to help you out"
+msgstr "Nous sommes là pour vous aider"
+
+#: apps/templates/authentication/acc_active_email.html:230
+msgid "If these emails get annoying, please feel free to "
+msgstr "Si ces e-mails deviennent ennuyeux, n'hésitez pas à "
+
+#: apps/templates/authentication/acc_active_email.html:231
+#: apps/templates/authentication/access_denied_email.html:193
+#: apps/templates/authentication/access_granted_email.html:240
+#: apps/templates/authentication/access_request_email.html:237
+#: apps/templates/authentication/password_reset_email.html:242
+msgid "unsubscribe"
+msgstr "Se désabonner"
+
+#: apps/templates/authentication/access_denied_email.html:142
+msgid "You have been denied access to the cashew dashboard:"
+msgstr "L'accès au tableau de bord des noix de cajou vous a été refusé:"
+
+#: apps/templates/authentication/access_denied_email.html:148
+#: apps/templates/authentication/access_granted_email.html:145
+msgid "If you did not initiate this request, please"
+msgstr "Si vous n'êtes pas à l'origine de cette demande, veuillez"
+
+#: apps/templates/authentication/access_denied_email.html:148
+#: apps/templates/authentication/access_granted_email.html:145
+#: apps/templates/authentication/password_reset_email.html:148
+msgid "so we can resolve this issue."
+msgstr "afin que nous puissions résoudre ce problème."
+
+#: apps/templates/authentication/access_denied_email.html:163
+#: apps/templates/authentication/access_granted_email.html:210
+#: apps/templates/authentication/access_request_email.html:207
+#: apps/templates/authentication/password_reset_email.html:212
+msgid "Regards,"
+msgstr "Salutations,"
+
+#: apps/templates/authentication/access_denied_email.html:163
+#: apps/templates/authentication/access_granted_email.html:210
+#: apps/templates/authentication/access_request_email.html:207
+#: apps/templates/authentication/password_reset_email.html:212
+msgid "Caju-Lab Support Team."
+msgstr "Équipe de soutien de Caju-Lab."
+
+#: apps/templates/authentication/access_denied_email.html:191
+#: apps/templates/authentication/access_granted_email.html:238
+#: apps/templates/authentication/access_request_email.html:235
+#: apps/templates/authentication/password_reset_email.html:240
+msgid "If these emails get annoying, please feel free to"
+msgstr "Si ces e-mails deviennent ennuyeux, n'hésitez pas à"
+
+#: apps/templates/authentication/access_granted_email.html:142
+msgid "You have been granted access to the cashew dashboard."
+msgstr ""
+"Vous avez reçu l'autorisation d'accéder au tableau de bord de la noix de "
+"cajou."
+
+#: apps/templates/authentication/access_granted_email.html:170
+msgid "Set Account Password"
+msgstr "Définir le mot de passe du compte"
+
+#: apps/templates/authentication/access_granted_email.html:184
+#: apps/templates/authentication/access_request_email.html:182
+msgid ""
+"If that does not work, copy and paste the following link in your browser or "
+"follow the reset password process with the email you used when requesting "
+"access:"
+msgstr ""
+"Si cela ne fonctionne pas, copiez et collez le lien suivant dans votre "
+"navigateur ou suivez la procédure de réinitialisation du mot de passe à "
+"l'aide de l'adresse électronique que vous avez utilisée lors de la demande "
+"d'accès :"
+
+#: apps/templates/authentication/access_request_email.html:142
+msgid "You have received new access request"
+msgstr "Vous avez reçu une nouvelle demande d'accès"
+
+#: apps/templates/authentication/access_request_email.html:168
+msgid "View Request"
+msgstr "Voir la demande"
+
+#: apps/templates/authentication/access_request_view.html:47
+#: apps/templates/authentication/access_request_view.html:65
+msgid "User Access Request"
+msgstr "Demande d'accès de l'utilisateur"
+
+#: apps/templates/authentication/access_request_view.html:77
+#: apps/templates/authentication/access_requests_list.html:70
+#: apps/templates/authentication/modify_user.html:84
+#: apps/templates/authentication/user_list.html:66
+#: apps/templates/dashboard/profile.html:124
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: apps/templates/authentication/access_request_view.html:85
+#: apps/templates/authentication/access_requests_list.html:68
+#: apps/templates/authentication/modify_user.html:68
+#: apps/templates/authentication/user_list.html:64
+#: apps/templates/dashboard/profile.html:85
+msgid "First Name"
+msgstr "Prénom"
+
+#: apps/templates/authentication/access_request_view.html:93
+#: apps/templates/authentication/access_requests_list.html:69
+#: apps/templates/authentication/modify_user.html:75
+#: apps/templates/authentication/user_list.html:65
+#: apps/templates/dashboard/profile.html:92
+msgid "Last Name"
+msgstr "Nom de famille"
+
+#: apps/templates/authentication/access_request_view.html:101
+msgid "Email"
+msgstr "E-mail"
+
+#: apps/templates/authentication/access_request_view.html:109
+msgid "Phone Number"
+msgstr "Numéro de téléphone"
+
+#: apps/templates/authentication/access_request_view.html:125
+#: apps/templates/authentication/access_requests_list.html:73
+#: apps/templates/authentication/modify_user.html:106
+#: apps/templates/dashboard/profile.html:160
+msgid "Organization Type"
+msgstr "Type d'organisation"
+
+#: apps/templates/authentication/access_request_view.html:133
+#: apps/templates/authentication/modify_user.html:114
+#: apps/templates/dashboard/profile.html:167
+msgid "Organization Name"
+msgstr "Nom de l'organisation"
+
+#: apps/templates/authentication/access_request_view.html:141
+msgid "Request Reason"
+msgstr "Raison de la demande"
+
+#: apps/templates/authentication/access_request_view.html:149
+msgid "Admin Comment"
+msgstr "Commentaire de l'Admin"
+
+#: apps/templates/authentication/access_request_view.html:174
+#: apps/templates/authentication/access_requests_list.html:76
+#: apps/templates/authentication/user_list.html:72
+msgid "Status"
+msgstr "Statut"
+
+#: apps/templates/authentication/access_request_view.html:178
+msgid "Pending"
+msgstr "En attente"
+
+#: apps/templates/authentication/access_request_view.html:180
+msgid "Accepted"
+msgstr "Accepté"
+
+#: apps/templates/authentication/access_request_view.html:182
+msgid "Denied"
+msgstr "Refusé"
+
+#: apps/templates/authentication/access_request_view.html:187
+msgid "Accept"
+msgstr "Accepter"
+
+#: apps/templates/authentication/access_request_view.html:191
+msgid "Deny"
+msgstr "Refuser"
+
+#: apps/templates/authentication/access_request_view.html:209
+msgid "Reason For Denying"
+msgstr "Raison du refus"
+
+#: apps/templates/authentication/access_request_view.html:215
+msgid "Reason for denying access (200 chars Max)"
+msgstr "Raison du refus d'accès (200 chars Max)"
+
+#: apps/templates/authentication/access_request_view.html:220
+msgid "Cancel"
+msgstr "Annuler"
+
+#: apps/templates/authentication/access_request_view.html:221
+#: apps/templates/authentication/modify_user.html:147
+#: apps/templates/authentication/new_password.html:62
+#: apps/templates/dashboard/profile.html:143
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: apps/templates/authentication/access_requests_list.html:41
+#: apps/templates/authentication/access_requests_list.html:58
+#: apps/templates/includes/sidenav.html:158
+msgid "Access Requests"
+msgstr "Accès - Demandes"
+
+#: apps/templates/authentication/access_requests_list.html:71
+#: apps/templates/authentication/modify_user.html:91
+#: apps/templates/authentication/user_list.html:67
+#: apps/templates/dashboard/profile.html:131
+msgid "Email address"
+msgstr "Adresse e-mail"
+
+#: apps/templates/authentication/access_requests_list.html:72
+#: apps/templates/authentication/user_list.html:68
+msgid "Phone"
+msgstr "Téléphone"
+
+#: apps/templates/authentication/access_requests_list.html:128
+msgid "View"
+msgstr "Voir"
+
+#: apps/templates/authentication/admin_register_user.html:21
+msgid "Register New User"
+msgstr "Enregistrer un nouvel utilisateur"
+
+#: apps/templates/authentication/admin_register_user.html:41
+msgid "Add new user credentials"
+msgstr "Ajoutez vos identifiants"
+
+#: apps/templates/authentication/admin_register_user.html:105
+#: apps/templates/authentication/request_access.html:96
+msgid "Country:"
+msgstr "Pays"
+
+#: apps/templates/authentication/admin_register_user.html:115
+#: apps/templates/authentication/request_access.html:106
+msgid "Organization Type:"
+msgstr "Type d'organisation"
+
+#: apps/templates/authentication/admin_register_user.html:125
+#: apps/templates/authentication/request_access.html:116
+msgid "Organization Name:"
+msgstr "Nom de l'organisation:"
+
+#: apps/templates/authentication/admin_register_user.html:135
+#: apps/templates/authentication/full_login.html:136
+msgid "Role:"
+msgstr "Rôle:"
+
+#: apps/templates/authentication/admin_register_user.html:143
+msgid "Save User"
+msgstr "Sauvegarder l'utilisateur"
+
+#: apps/templates/authentication/email_confirm_invalid.html:19
+msgid " Ooops activation link is invalid!"
+msgstr " Oups le lien d'activation n'est pas valide !"
+
+#: apps/templates/authentication/email_confirm_invalid.html:23
+#: apps/templates/authentication/password_change_failed.html:24
+msgid "Please reach out to us through this"
+msgstr "Veuillez nous contacter par ce biais"
+
+#: apps/templates/authentication/email_confirm_invalid.html:23
+#: apps/templates/authentication/password_change_failed.html:24
+msgid "link"
+msgstr "lien"
+
+#: apps/templates/authentication/email_confirm_invalid.html:30
+#: apps/templates/authentication/email_confirmed.html:30
+#: apps/templates/authentication/password_change_failed.html:31
+msgid "Home"
+msgstr "Accueil"
+
+#: apps/templates/authentication/email_confirm_invalid.html:33
+#: apps/templates/authentication/email_confirmed.html:33
+#: apps/templates/authentication/full_login.html:222
+#: apps/templates/authentication/login.html:86
+#: apps/templates/authentication/new_password.html:73
+#: apps/templates/authentication/password_change_failed.html:34
+#: apps/templates/authentication/password_reset_form.html:63
+#: apps/templates/authentication/register_org.html:152
+#: apps/templates/authentication/register_role.html:93
+#: apps/templates/authentication/request_access.html:163
+#: apps/templates/dashboard/login.html:69
+msgid "Contact Us"
+msgstr "Nous contacter"
+
+#: apps/templates/authentication/email_confirmed.html:19
+msgid "Thank you for your email confirmation."
+msgstr "Merci pour votre e-mail de confirmation."
+
+#: apps/templates/authentication/email_confirmed.html:23
+msgid "Now you can"
+msgstr "Maintenant vous pouvez vous"
+
+#: apps/templates/authentication/email_confirmed.html:23
+#: apps/templates/authentication/new_password.html:26
+msgid "login"
+msgstr "connecter"
+
+#: apps/templates/authentication/email_confirmed.html:23
+msgid "your account"
+msgstr "à votre compte"
+
+#: apps/templates/authentication/full_login.html:21
+msgid "Sign Up"
+msgstr "S'inscrire"
+
+#: apps/templates/authentication/full_login.html:30
+#: apps/templates/authentication/login.html:31
+#: apps/templates/authentication/password_reset_form.html:28
+#: apps/templates/authentication/register_org.html:32
+#: apps/templates/authentication/register_role.html:30
+#: apps/templates/authentication/request_access.html:32
+msgid "Add your credentials"
+msgstr "Ajoutez vos identifiants"
+
+#: apps/templates/authentication/full_login.html:77
+msgid "Gender:"
+msgstr "Le genre:"
+
+#: apps/templates/authentication/full_login.html:90
+msgid "Date of Birth:"
+msgstr "Date de naissance:"
+
+#: apps/templates/authentication/full_login.html:123
+msgid "Organization type:"
+msgstr "Type d'organisation :"
+
+#: apps/templates/authentication/full_login.html:198
+#: apps/templates/authentication/register_org.html:128
+#: apps/templates/authentication/register_role.html:69
+#: apps/templates/dashboard/register.html:67
+msgid "Privacy Policy"
+msgstr "Politique de confidentialité"
+
+#: apps/templates/authentication/full_login.html:204
+#: apps/templates/dashboard/register.html:73
+msgid "Create account"
+msgstr "Créer un compte"
+
+#: apps/templates/authentication/full_login.html:219
+#: apps/templates/authentication/register_org.html:149
+#: apps/templates/authentication/register_role.html:90
+#: apps/templates/authentication/request_access.html:160
+#: apps/templates/includes/langnav.html:17
+#: apps/templates/includes/navigation-fullscreen.html:29
+#: apps/templates/includes/sidenav_auth.html:40
+msgid "Login"
+msgstr "Connexion"
+
+#: apps/templates/authentication/login.html:21
+msgid "Sign In"
+msgstr "S'identifier"
+
+#: apps/templates/authentication/login.html:62
+#: apps/templates/dashboard/login.html:55
+msgid "Remember me"
+msgstr "Se Souvenir de moi"
+
+#: apps/templates/authentication/login.html:66
+#: apps/templates/dashboard/login.html:59
+msgid "Sign in"
+msgstr "S'identifier"
+
+#: apps/templates/authentication/login.html:69
+msgid "Forgot password"
+msgstr "Mot de passe oublié"
+
+#: apps/templates/authentication/login.html:73
+#: apps/templates/includes/sidenav_auth.html:55
+msgid ""
+"Registration is required to request for access to the restricted data: "
+"Plantations, Yield, Recommendations, Nursery locations, Training "
+"information, Tree density, Statistics and Quality data."
+msgstr ""
+"L'enregistrement est nécessaire pour demander l'accès aux données "
+"restreintes : Plantations, Rendement, Recommandations, Emplacement des "
+"pépinières, Formation formation, densité des arbres, statistiques et données "
+"sur la qualité."
+
+#: apps/templates/authentication/login.html:77
+#: apps/templates/authentication/new_password.html:70
+#: apps/templates/authentication/password_reset_form.html:60
+#: apps/templates/dashboard/login.html:66
+#: apps/templates/includes/langnav.html:24
+#: apps/templates/includes/navigation-fullscreen.html:34
+#: apps/templates/includes/sidenav_auth.html:48
+msgid "Register"
+msgstr "S'inscrire"
+
+#: apps/templates/authentication/modify_user.html:37
+msgid "Modify user"
+msgstr "Modifier l'utilisateur"
+
+#: apps/templates/authentication/modify_user.html:58
+#: apps/templates/dashboard/profile.html:75
+msgid "Edit profile"
+msgstr "Editer le profil"
+
+#: apps/templates/authentication/modify_user.html:63
+#: apps/templates/dashboard/profile.html:80
+msgid "User information"
+msgstr "Informations de l'utilisateur"
+
+#: apps/templates/authentication/modify_user.html:100
+msgid "Editable information"
+msgstr "Informations modifiables"
+
+#: apps/templates/authentication/modify_user.html:132
+#: apps/templates/authentication/user_list.html:71
+#: apps/templates/dashboard/profile.html:183
+msgid "Role"
+msgstr "Rôle:"
+
+#: apps/templates/authentication/modify_user.html:145
+msgid "Go Back"
+msgstr "Retourner"
+
+#: apps/templates/authentication/new_password.html:19
+#: apps/templates/authentication/password_reset_form.html:18
+msgid "Set new password"
+msgstr "Définir un nouveau mot de passe"
+
+#: apps/templates/authentication/new_password.html:26
+msgid "to your account."
+msgstr "Votre compte."
+
+#: apps/templates/authentication/new_password.html:30
+msgid "Add and confirm your new password"
+msgstr "Ajoutez et confirmez votre nouveau mot de passe"
+
+#: apps/templates/authentication/password_change_failed.html:20
+msgid "Ooops password change link is invalid!"
+msgstr "Oups le lien de changement de mot de passe n'est pas valide !"
+
+#: apps/templates/authentication/password_reset_email.html:145
+msgid "Please click the button bellow to reset your password."
+msgstr ""
+"Veuillez cliquer sur le bouton ci-dessous pour réinitialiser votre mot de "
+"passe."
+
+#: apps/templates/authentication/password_reset_email.html:148
+msgid ""
+"If you did not initiate this password reset and have received this email, "
+"please"
+msgstr ""
+"Si vous n'avez pas initié la réinitialisation de votre mot de passe et que "
+"vous avez reçu cet e-mail, veuillez"
+
+#: apps/templates/authentication/password_reset_email.html:173
+msgid "Confirm Password Reset"
+msgstr "Confirmer la réinitialisation du mot de passe"
+
+#: apps/templates/authentication/password_reset_form.html:52
+msgid "Change Password"
+msgstr "Changer le mot de passe"
+
+#: apps/templates/authentication/register_org.html:23
+msgid "Register Organization type"
+msgstr "Registre Type d'organisation"
+
+#: apps/templates/authentication/register_org.html:128
+#: apps/templates/authentication/register_role.html:69
+#: apps/templates/authentication/request_access.html:139
+#: apps/templates/dashboard/register.html:67
+msgid "I agree with the"
+msgstr "je suis d'accord avec le"
+
+#: apps/templates/authentication/register_org.html:134
+msgid "Create Organization type"
+msgstr "Créer un type d'organisation"
+
+#: apps/templates/authentication/register_role.html:21
+msgid "Register Role"
+msgstr "Enregistrer le rôle"
+
+#: apps/templates/authentication/register_role.html:75
+msgid "Create Role"
+msgstr "Créer un rôle"
+
+#: apps/templates/authentication/request_access.html:23
+msgid "Request Access"
+msgstr "Demande d'accès"
+
+#: apps/templates/authentication/request_access.html:126
+msgid "Reason for Access:"
+msgstr "Demande d'accès"
+
+#: apps/templates/authentication/request_access.html:139
+msgid "Privacy Policies"
+msgstr "Politique de confidentialité"
+
+#: apps/templates/authentication/request_access.html:145
+msgid "Send Request"
+msgstr "Envoyer la demande"
+
+#: apps/templates/authentication/role_options.html:2
+msgid "Not Listed"
+msgstr "Non listé"
+
+#: apps/templates/authentication/user_email.html:150
+#: apps/templates/authentication/user_request_email.html:150
+msgid "Data type"
+msgstr "Type de données"
+
+#: apps/templates/authentication/user_email.html:151
+#: apps/templates/authentication/user_request_email.html:151
+msgid "Old informations"
+msgstr "Informations de l'utilisateur"
+
+#: apps/templates/authentication/user_email.html:152
+#: apps/templates/authentication/user_request_email.html:152
+msgid "New informations"
+msgstr "Informations de l'utilisateur"
+
+#: apps/templates/authentication/user_email.html:198
+#: apps/templates/authentication/user_request_email.html:203
+msgid "Change informations"
+msgstr "Informations de l'utilisateur"
+
+#: apps/templates/authentication/user_list.html:37
+#: apps/templates/authentication/user_list.html:54
+msgid "Users"
+msgstr "Nom d'utilisateur"
+
+#: apps/templates/authentication/user_list.html:121
+#: apps/templates/authentication/user_list.html:169
+msgid "Edit user"
+msgstr "Modifier l'utilisateur"
+
+#: apps/templates/authentication/user_request_email.html:113
+#: apps/templates/authentication/user_request_email.html:131
+msgid "New request from"
+msgstr "Nouvelle demande de"
+
+#: apps/templates/authentication/user_request_email.html:145
+msgid "want to change the following informations:"
+msgstr "Je souhaite modifier les informations suivantes :"
+
+#: apps/templates/dashboard/HTTP400.html:10
+msgid "We have got some trouble | 400 - Bad Request"
+msgstr "Nous avons quelques problèmes | 400 - Mauvaise requête"
+
+#: apps/templates/dashboard/HTTP400.html:322
+msgid "Bad Request "
+msgstr "Mauvaise requête "
+
+#: apps/templates/dashboard/HTTP400.html:323
+msgid ""
+"The server cannot process the request due to something that is perceived to "
+"be a client error."
+msgstr ""
+"Le serveur ne peut pas traiter la demande en raison de quelque chose qui est "
+"perçu comme une erreur client."
+
+#: apps/templates/dashboard/HTTP403.html:9
+msgid "We've got some trouble | 403 - Access Denied"
+msgstr "Nous avons quelques problèmes | 403 - Accès refusé"
+
+#: apps/templates/dashboard/HTTP403.html:282
+msgid "Access Denied "
+msgstr "Accès refusé "
+
+#: apps/templates/dashboard/HTTP403.html:283
+msgid "The requested resource requires an authentication."
+msgstr "La ressource demandée nécessite une authentification."
+
+#: apps/templates/dashboard/HTTP404.html:9
+msgid "We've got some trouble | 404 - Resource not found"
+msgstr "Nous avons quelques problèmes | 404 - Ressource introuvable"
+
+#: apps/templates/dashboard/HTTP404.html:282
+msgid "Resource not found "
+msgstr "Page non trouvée "
+
+#: apps/templates/dashboard/HTTP404.html:283
+msgid ""
+"The requested resource could not be found but may be available again in the "
+"future."
+msgstr ""
+"La ressource demandée est introuvable mais peut être à nouveau disponible "
+"plus tard."
+
+#: apps/templates/dashboard/HTTP500.html:9
+msgid "We've got some trouble | 500 - Webservice currently unavailable"
+msgstr ""
+"Nous avons quelques problèmes | 500 - Service actuellement indisponible"
+
+#: apps/templates/dashboard/HTTP500.html:282
+msgid "Webservice currently unavailable "
+msgstr "Service actuellement indisponible "
+
+#: apps/templates/dashboard/HTTP500.html:283
+msgid ""
+"An unexpected condition was encountered.<br/>Our service team has been "
+"dispatched to bring it back online."
+msgstr ""
+"Une condition inattendue a été rencontrée.<br/>Notre équipe de service a été "
+"envoyée pour le remettre en ligne."
+
+#: apps/templates/dashboard/analytics.html:33
+msgid "KOR average per"
+msgstr "Moyenne de KOR par"
+
+#: apps/templates/dashboard/analytics.html:45
+msgid "KOR average per Departement communes"
+msgstr "Moyenne de KOR par communes de departement"
+
+#: apps/templates/dashboard/analytics.html:71
+#: apps/templates/dashboard/defective_rate.html:81
+#: apps/templates/dashboard/nut_count.html:81
+msgid "Submit"
+msgstr "Envoyer"
+
+#: apps/templates/dashboard/defective_rate.html:20
+msgid "Defective rate"
+msgstr "Arbres Actifs"
+
+#: apps/templates/dashboard/defective_rate.html:40
+msgid "Defective rate average per"
+msgstr "Moyenne du taux de défectuosité par commune"
+
+#: apps/templates/dashboard/defective_rate.html:55
+msgid "Defective rate average per Departement communes"
+msgstr "Moyenne du taux de défectuosité par communes de département"
+
+#: apps/templates/dashboard/defective_rate.html:73
+msgid "Defective rate graph against date period"
+msgstr "Graphique du taux de défectuosité par rapport à la période de temps"
+
+#: apps/templates/dashboard/login.html:19
+msgid "Sign in with"
+msgstr "Se connecter avec"
+
+#: apps/templates/dashboard/login.html:23
+#: apps/templates/dashboard/register.html:24
+msgid "Github"
+msgstr "Github"
+
+#: apps/templates/dashboard/login.html:33
+msgid "Or sign in with credentials"
+msgstr "Ou connectez-vous avec vos identifiants"
+
+#: apps/templates/dashboard/nurseries.html:15
+#: apps/templates/dashboard/nurseries.html:42
+#: apps/templates/includes/sidenav.html:215
+msgid "Nurseries"
+msgstr "Pépinières"
+
+#: apps/templates/dashboard/nurseries.html:19
+#: apps/templates/dashboard/nurseries.html:24
+#: apps/templates/dashboard/plantations.html:18
+#: apps/templates/dashboard/plantations.html:23
+#: apps/templates/dashboard/training.html:30
+#: apps/templates/dashboard/training.html:56
+#: apps/templates/dashboard/training.html:57
+#: apps/templates/dashboard/training.html:58
+#: apps/templates/dashboard/yield.html:19
+#: apps/templates/dashboard/yield.html:24
+msgid "Search"
+msgstr "Recherche"
+
+#: apps/templates/dashboard/nurseries.html:47
+#: apps/templates/dashboard/plantations.html:46
+#: apps/templates/dashboard/training.html:80
+#: apps/templates/dashboard/yield.html:46
+msgid "Export Excel"
+msgstr "Exporter Excel"
+
+#: apps/templates/dashboard/nurseries.html:48
+#: apps/templates/dashboard/plantations.html:47
+#: apps/templates/dashboard/training.html:81
+#: apps/templates/dashboard/yield.html:47
+msgid "Export CSV"
+msgstr "Exporter CSV"
+
+#: apps/templates/dashboard/nurseries.html:49
+#: apps/templates/dashboard/plantations.html:48
+#: apps/templates/dashboard/training.html:82
+#: apps/templates/dashboard/yield.html:48
+msgid "Export PDF"
+msgstr "Exporter PDF"
+
+#: apps/templates/dashboard/nut_count.html:40
+msgid "Nut count average per"
+msgstr "Moyenne du nombre de noix par commune"
+
+#: apps/templates/dashboard/nut_count.html:55
+msgid "Nut count average per Departement communes"
+msgstr "Moyenne du nombre de noix par commune de département"
+
+#: apps/templates/dashboard/nut_count.html:73
+#, fuzzy
+#| msgid "Nut count Graph against date period"
+msgid "Nut count graph against date period"
+msgstr "Moyenne du nombre de noix par rapport à la période"
+
+#: apps/templates/dashboard/plantations.html:41
+msgid "Plantations Data"
+msgstr "Données sur les plantations"
+
+#: apps/templates/dashboard/plantations.html:58
+#: apps/templates/dashboard/shipment.html:55
+#: apps/templates/dashboard/yield.html:58
+msgid "Plantation Name"
+msgstr "Nom de la plantation"
+
+#: apps/templates/dashboard/plantations.html:59
+msgid "Plantation Code"
+msgstr "Code de plantation"
+
+#: apps/templates/dashboard/plantations.html:60
+msgid "Owner First name"
+msgstr "Prénom du propriétaire"
+
+#: apps/templates/dashboard/plantations.html:61
+msgid "Owner Last name"
+msgstr "Nom du propriétaire"
+
+#: apps/templates/dashboard/plantations.html:62
+msgid "Gender"
+msgstr "Le genre"
+
+#: apps/templates/dashboard/plantations.html:63
+msgid "Total Trees"
+msgstr "Nombre total d'arbres"
+
+#: apps/templates/dashboard/plantations.html:69
+msgid "Area(Ha)"
+msgstr "Superficie(ha)"
+
+#: apps/templates/dashboard/plantations.html:174
+#: apps/templates/dashboard/shipment.html:132
+#: apps/templates/dashboard/training.html:171
+#: apps/templates/dashboard/yield.html:131
+msgid "Previous"
+msgstr "Précédent"
+
+#: apps/templates/dashboard/plantations.html:210
+#: apps/templates/dashboard/plantations.html:218
+#: apps/templates/dashboard/shipment.html:168
+#: apps/templates/dashboard/shipment.html:176
+#: apps/templates/dashboard/training.html:207
+#: apps/templates/dashboard/training.html:215
+#: apps/templates/dashboard/yield.html:167
+#: apps/templates/dashboard/yield.html:175
+msgid "Next"
+msgstr "Suivant"
+
+#: apps/templates/dashboard/profile.html:26
+msgid "Hello"
+msgstr "Bonjour"
+
+#: apps/templates/dashboard/profile.html:28
+msgid ""
+"This is your profile page, you can update your profile information by "
+"clicking the Edit profile below"
+msgstr ""
+"Il s'agit de votre page de profil. Vous pouvez mettre à jour les "
+"informations de votre profil encliquant sur le bouton Modifier le profil ci-"
+"dessous."
+
+#: apps/templates/dashboard/profile.html:101
+msgid "Phone number"
+msgstr "Numéro de téléphone"
+
+#: apps/templates/dashboard/profile.html:151
+msgid "For changing any of the below information, please submit a request."
+msgstr ""
+"Pour modifier l'une des informations ci-dessous, veuillez soumettre une "
+"demande."
+
+#: apps/templates/dashboard/profile.html:192
+msgid "Request"
+msgstr "Envoyer une requête"
+
+#: apps/templates/dashboard/profile.html:203
+msgid "Send request"
+msgstr "Envoyer une requête"
+
+#: apps/templates/dashboard/register.html:20
+msgid "Sign up with"
+msgstr "Se connecter avec"
+
+#: apps/templates/dashboard/register.html:34
+msgid "Or sign up with credentials"
+msgstr "Ou inscrivez-vous avec vos identifiants"
+
+#: apps/templates/dashboard/register.html:61
+msgid "password strength:"
+msgstr "Fiabilité du mot de passe:"
+
+#: apps/templates/dashboard/register.html:61
+msgid "strong"
+msgstr "fort"
+
+#: apps/templates/dashboard/shipment.html:16
+#: apps/templates/dashboard/shipment.html:47
+#: apps/templates/includes/sidenav.html:204
+msgid "Shipment"
+msgstr "Expédition"
+
+#: apps/templates/dashboard/shipment.html:56
+msgid "Shipment Date"
+msgstr "Date d'expédition"
+
+#: apps/templates/dashboard/shipment.html:57
+msgid "Port Number"
+msgstr "Numéro de port"
+
+#: apps/templates/dashboard/shipment.html:58
+msgid "Cashew Quantity"
+msgstr "Quantité de noix de cajou"
+
+#: apps/templates/dashboard/shipment.html:61
+msgid "Plantation Area"
+msgstr "Zone de plantation"
+
+#: apps/templates/dashboard/training.html:26
+#: apps/templates/dashboard/training.html:75
+#: apps/templates/includes/sidenav.html:226
+msgid "Training"
+msgstr "Formation"
+
+#: apps/templates/dashboard/yield.html:15
+msgid "Yields"
+msgstr "Rendements"
+
+#: apps/templates/dashboard/yield.html:41
+#: apps/templates/includes/sidenav.html:193
+msgid "Yield"
+msgstr "Rendement"
+
+#: apps/templates/dashboard/yield.html:59
+msgid "Product ID"
+msgstr "Identifiant du produit"
+
+#: apps/templates/dashboard/yield.html:61
+msgid "Total Plants"
+msgstr "Plantes totales"
+
+#: apps/templates/dashboard/yield.html:62
+msgid "Yields (Kg)"
+msgstr "Rendements (Kg)"
+
+#: apps/templates/dashboard/yield.html:63
+msgid "Yields/Ha (Kg)"
+msgstr "Rendements/Ha (Kg)"
+
+#: apps/templates/dashboard/yield.html:64
+msgid "Yields/Tree (Kg)"
+msgstr "Rendements/Arbre (Kg)"
+
+#: apps/templates/dashboard/yield.html:67
+msgid "Out of Prod. Trees"
+msgstr "Hors prod. Des arbres"
+
+#: apps/templates/includes/footer.html:9
+msgid "More Dashboards"
+msgstr "Plus de tableaux de bord"
+
+#: apps/templates/includes/footer.html:15
+msgid "Creative-Tim"
+msgstr "Créatif-Tim"
+
+#: apps/templates/includes/footer.html:16
+msgid "AppSeed"
+msgstr "AppSeed"
+
+#: apps/templates/includes/langnav.html:34
+msgid "Language"
+msgstr "Langue"
+
+#: apps/templates/includes/langnav.html:53
+#, fuzzy
+#| msgid "Like us on Facebook"
+msgid " Like us on Facebook"
+msgstr "Aimez-nous sur facebook"
+
+#: apps/templates/includes/langnav.html:55
+#: apps/templates/includes/navigation-fullscreen.html:44
+msgid "Facebook"
+msgstr "Facebook"
+
+#: apps/templates/includes/langnav.html:60
+#, fuzzy
+#| msgid "Follow us on Twitter"
+msgid " Follow us on Twitter"
+msgstr "Suivez-nous sur Twitter"
+
+#: apps/templates/includes/langnav.html:62
+#: apps/templates/includes/navigation-fullscreen.html:51
+msgid "Twitter"
+msgstr "Twitter"
+
+#: apps/templates/includes/langnav.html:67
+msgid "Support Technoserve"
+msgstr "Support Technoserve"
+
+#: apps/templates/includes/langnav.html:69
+msgid "Support"
+msgstr "Soutien"
+
+#: apps/templates/includes/navigation-fullscreen.html:60
+msgid "Caju-Support"
+msgstr "Caju-Support"
+
+#: apps/templates/includes/navigation.html:44
+msgid "You have"
+msgstr "Vous avez"
+
+#: apps/templates/includes/navigation.html:44
+msgid "notifications"
+msgstr "notifications"
+
+#: apps/templates/includes/sidenav.html:28
+#: apps/templates/includes/sidenav_auth.html:28
+msgid "Cashew Dashboard"
+msgstr "Dashboard des cajous"
+
+#: apps/templates/includes/sidenav.html:47
+msgid "Welcome,"
+msgstr "Bienvenue"
+
+#: apps/templates/includes/sidenav.html:76
+msgid "Map"
+msgstr "Carte"
+
+#: apps/templates/includes/sidenav.html:86
+msgid "Profile"
+msgstr "Profil"
+
+#: apps/templates/includes/sidenav.html:103
+msgid "Admin"
+msgstr ""
+
+#: apps/templates/includes/sidenav.html:122
+msgid "New User"
+msgstr "Nouvel Utilisateur"
+
+#: apps/templates/includes/sidenav.html:140
+msgid "Users's list"
+msgstr "Liste des utilisateurs"
+
+#: apps/templates/includes/sidenav.html:240
+msgid "Analytics"
+msgstr "Données analytiques"
+
+#: apps/templates/includes/sidenav.html:306
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: apps/templates/includes/sidenav.html:315
+#: apps/templates/includes/sidenav_auth.html:66
+msgid "Resources"
+msgstr "Ressources"
+
+#: apps/templates/includes/sidenav.html:326
+#: apps/templates/includes/sidenav_auth.html:77
+msgid "About TechnoServe"
+msgstr "À propos de TechnoServe"
+
+#: apps/templates/includes/sidenav.html:334
+#: apps/templates/includes/sidenav_auth.html:85
+msgid "Visit TechnoServe Labs"
+msgstr "Visitez TechnoServe Labs"
+
+#: apps/templates/includes/sidenav_auth.html:56
+msgid ""
+"Cashew nut multi-country map. Reduce to see active countries. Register to "
+"see specific data (plantations, training, recommendations)."
+msgstr "Carte génerique multi-pays de l'anacarde. Réduire pour voir les pays actifs. S'inscrire pour "
+"voir les données specifiques (plantations, formations, recommendations)."
+
+#: apps/templates/layouts/base-fullscreen.html:13
+msgid "TechnoServe"
+msgstr "Technoserve"
+
+#: apps/templates/layouts/base.html:13
+msgid "Technoserve"
+msgstr "Technoserve"
+
+#: cajulab_remote_sensing_dashboard/settings.py:151
+msgid "English"
+msgstr "Anglais"
+
+#: cajulab_remote_sensing_dashboard/settings.py:152
+msgid "French"
+msgstr "Français"
+
+#~ msgid "Please confirm your email address to complete the registration"
+#~ msgstr "Veuillez confirmer votre adresse e-mail pour terminer l'inscription"
+
+#~ msgid "Form is not valid - Passwords do not match"
+#~ msgstr ""
+#~ "Le formulaire n'est pas valide - Les mots de passe ne correspondent pas"
+
+#~ msgid ""
+#~ "We have emailed you instructions for setting your "
+#~ "password.                         If an account exists with the email you "
+#~ "have entered, you should receive them shortly.                        If "
+#~ "you do not receive an email, please make sure you've entered the address "
+#~ "you registered with correctly,                         and check your "
+#~ "spam folder."
+#~ msgstr ""
+#~ "Nous vous avons envoyé par e-mail des instructions pour configurer votre "
+#~ "mot de passe.                         Si un compte existe avec l'adresse "
+#~ "e-mail que vous avez entrés, vous devriez les recevoir sous "
+#~ "peu.                        Si vous ne recevez pas um mail, assurez-vous "
+#~ "d'avoir entré l'adresse que vous .,                         et vérifiez "
+#~ "vos spams "
+
+#~ msgid "Satellite Prediction"
+#~ msgstr "Prédiction Satellitaire"
+
+#~ msgid "Satellite Est"
+#~ msgstr "Satellite Est"
+
+#~ msgid "Benin Communes"
+#~ msgstr "Communes du Bénin"
+
+#~ msgid ""
+#~ "among Benin departments in terms of total cashew yield according to the "
+#~ "TNS Yield Survey"
+#~ msgstr ""
+#~ "entre les departements du Benin en termes de rendement total de cajou "
+#~ "selon l'enquete de rendement TNS"
+
+#~ msgid "Benin Departments"
+#~ msgstr "Départements du Bénin"
+
+#~ msgid "Benin Drone"
+#~ msgstr "Communes du Bénin"
+
+#~ msgid "No Boundary"
+#~ msgstr "Aucune limite"
+
+#~ msgid "To initiate the password reset process for your"
+#~ msgstr ""
+#~ "Pour lancer le processus de réinitialisation du mot de passe pour votre"
+
+#~ msgid ""
+#~ "Satellite Data Visualisation Dashboard account, click the link below."
+#~ msgstr ""
+#~ "compte Satellite Data Visualization Dashboard, cliquez sur le lien ci-"
+#~ "dessous."
+
+#~ msgid "Tables"
+#~ msgstr "les tables"
+
+#~ msgid "Organizations"
+#~ msgstr "Organisations"
+
+#~ msgid "Website"
+#~ msgstr "Site Internet"
+
+#~ msgid "Address"
+#~ msgstr "Adresse"
+
+#~ msgid "Plantation"
+#~ msgstr "Plantation"
+
+#~ msgid "Plantation Age"
+#~ msgstr "Âge de la plantation"
+
+#~ msgid "Owner Name"
+#~ msgstr "Le nom du propriétaire"
+
+#~ msgid "Plantation Address"
+#~ msgstr "Adresse de plantation"
+
+#~ msgid "Owner Address"
+#~ msgstr "Adresse du propriétaire"
+
+#~ msgid "Create Account"
+#~ msgstr "Créer un compte"
+
+#~ msgid ""
+#~ "This is your profile page. You can see the progress you have made with "
+#~ "your work and manage your projects or assigned tasks"
+#~ msgstr ""
+#~ "Ceci est votre page de profil. Vous pouvez voir l'avancement de votre "
+#~ "travail et gérer vos projets ou tâches assignées"
+
+#~ msgid "Contact information"
+#~ msgstr "Informations de contact"
+
+#~ msgid "Registration"
+#~ msgstr "Inscription"
+
+#~ msgid "New Organization"
+#~ msgstr "Nouvelle organisation"
+
+#~ msgid "Cajúlab Presents"
+#~ msgstr "Cajúlab présente"
+
+#~ msgid "select department"
+#~ msgstr "Sélectionner le département"
+
+#~ msgid "nursery name"
+#~ msgstr "Nom de la Pépinière"
+
+#~ msgid "nursery address"
+#~ msgstr "Adresse de la Pépinière"
+
+#~ msgid "country"
+#~ msgstr "Pays"
+
+#~ msgid "commune"
+#~ msgstr "commune"
+
+#~ msgid "latitude"
+#~ msgstr "Latitude"
+
+#~ msgid "longitude"
+#~ msgstr "Longitude"
+
+#~ msgid "altitude"
+#~ msgstr "Altitude"
+
+#~ msgid "partner"
+#~ msgstr "Partenaire"
+
+#~ msgid "number of plants"
+#~ msgstr "Nombre de plantes"
+
+#~ msgid "Select Department: "
+#~ msgstr "Sélectionner le département"
+
+#~ msgid "Oups! Error 403"
+#~ msgstr "Oups! Erreur 403"
+
+#~ msgid "Get Support"
+#~ msgstr "Obtenir de l'aide"
+
+#~ msgid "Oups! Error 404"
+#~ msgstr "Oups! Erreur 404"
+
+#~ msgid "Oups! Error 500"
+#~ msgstr "Oups! Erreur 500"
+
+#~ msgid "Server error, please contact support"
+#~ msgstr "Erreur de serveur, veuillez contacter le support"
+
+#~ msgid "QAR"
+#~ msgstr "QAR"
+
+#~ msgid "KOR average per Departement"
+#~ msgstr "Moyenne de KOR par departement"
+
+#~ msgid "Defective rate average per Departement"
+#~ msgstr "Moyenne du taux de défectuosité par département"
+
+#~ msgid "Nut count average per Departement"
+#~ msgstr "Moyenne du nombre de noix par département"
+
+#~ msgid "Access denied - Please authenticate"
+#~ msgstr "Accès refusé - Veuillez vous authentifier"
+
+#~ msgid "Satellite View"
+#~ msgstr "Vue satellite"
+
+#~ msgid "Connect"
+#~ msgstr "Relier"
+
+#~ msgid "Message"
+#~ msgstr "Message"
+
+#~ msgid "City"
+#~ msgstr "Ville"
+
+#~ msgid "About me"
+#~ msgstr "À propos de moi"
+
+#~ msgid "About Me"
+#~ msgstr "À propos de moi"
+
+#~ msgid "Something about me, does not update for now."
+#~ msgstr "Quelque chose à propos de moi, ne se met pas à jour pour l'instant."
+
+#~ msgid "Already signed in?"
+#~ msgstr "Déjà connecté ?"

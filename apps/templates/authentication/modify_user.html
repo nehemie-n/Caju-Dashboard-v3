@@ -1,0 +1,215 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load render_bundle from webpack_loader %}
+{% load index %}
+
+
+{% block title %} Modify user {% endblock title %}
+
+{% block stylesheets %}
+<style>
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .left-button {
+        order: 1;
+    }
+
+    .right-buttons {
+        order: 2;
+    }
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div>
+                    <button id="collap_button" class="pr-3 sidenav-toggler sidenav-toggler-dark btn btn-primary"
+                        type="button" data-action="sidenav-pin" data-target="#sidenav-main"><i
+                            class="fas fa-bars"></i></button>&nbsp;&nbsp;&nbsp;<h6
+                        class="h2 text-white d-inline-block mb-0">{% trans "Modify user" %}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container  mt--6 pb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-8">
+            <div class="form-group">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <!-- Page content -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="row align-items-center">
+                                            <div class="col-8">
+                                                <h3 class="mb-0">{% trans "Edit profile" %} </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h6 class="heading-small text-muted mb-4">{% trans "User information" %}</h6>
+                                        <div class="pl-lg-4">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="input-firstname">{% trans "First Name" %}</label>
+                                                        <input type="email" id="input-firstname" class="form-control"
+                                                                placeholder="{{ user.user.first_name }}" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="input-lastname">{% trans "Last Name"%}</label>
+                                                        <input type="email" id="input-lastname" class="form-control"
+                                                                placeholder="{{ user.user.last_name }}" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="input-username">{% trans "Username" %}</label>
+                                                        <input type="text" id="input-username" class="form-control"
+                                                                placeholder="Username" value="{{ user.user.username }}" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="input-email">{% trans "Email address" %}</label>
+                                                        <input type="email" id="input-email" class="form-control"
+                                                                placeholder="{{ user.user.email }}" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="my-4"/>
+                                        <!-- Address -->
+                                        <h6 class="heading-small text-muted mb-4">{% trans "Editable information" %}</h6>
+                                        <div class="pl-lg-4">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label"
+                                                                for="id_organization">{% trans "Organization Type" %}</label>
+                                                        {{ form.organization }}
+                                                        <span class="text-error errors">{{ form.organization.errors }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label"
+                                                                for="organization_name">{% trans "Organization Name" %}</label>
+                                                        {{ form.organization_name }}
+                                                        <span class="text-error errors">{{ form.organization_name.errors }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label"
+                                                                for="id_country">{% trans "Country" %}</label>
+                                                        {{ form.country_id }}
+                                                        <span class="text-error errors">{{ form.country_id.errors }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label"
+                                                                for="id_role">{% trans "Role" %}</label>
+                                                        {{ form.role }}
+                                                        <span class="text-error errors">{{ form.role.errors }}</span>
+                                                    </div>
+                                                </div>
+                                                {{ form.phone }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button-container">
+                            <input class="left-button btn btn-warning" value = '{% trans "Go Back" %}' onclick="history.back()"></input>
+                            <div class="right-buttons">
+                                <input class="btn btn-neutral" type="submit" value = '{% trans "Save" %}'>
+                                {% if user.user.is_active %}
+                                    <button type="button" class="btn btn-danger" data-target="#deleteModal" data-toggle="modal">Deactivate User</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="deleteModal">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Deactivate User</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Are you sure you want to deactivate this user?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                                    <a href="{% url 'activate_deactivate_user' id=user.user.id %}" class="btn btn-danger">Yes</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <button type="button" class="btn btn-success" data-target="#deleteModal" data-toggle="modal">Activate User</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="deleteModal">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Activate User</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Are you sure you want to activate this user?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                                    <a href="{% url 'activate_deactivate_user' id=user.user.id %}" class="btn btn-success">Yes</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+    {% render_bundle 'dropdown_filter' %}
+    <script>
+        var currentLanguage = "{{ request.LANGUAGE_CODE }}";
+        $(document).ready(function () {
+
+        });
+    </script>
+{% endblock javascripts %}

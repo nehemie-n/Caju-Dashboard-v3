@@ -1,0 +1,273 @@
+{% extends 'layouts/base.html' %}
+{% load i18n %}
+{% load index %}
+{% block title %}
+    GAUL 3
+{% endblock title %}
+{% block content %}
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div>
+                        <button id="collap_button"
+                                class="pr-3 sidenav-toggler sidenav-toggler-dark btn btn-primary"
+                                type="button"
+                                data-action="sidenav-pin"
+                                data-target="#sidenav-main">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        &nbsp;&nbsp;&nbsp;
+                        <h6 class="h2 text-white d-inline-block mb-0">{% trans "GAUL 3" %}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header border-0">
+                        <div style="float: left">
+                            <h3 class="mb-0">{% trans "GAUL 3" %}</h3>
+                        </div>
+                        <div style="float: right; display: flex; justify: space-between;">
+                            {% if request.user|user_role|check_list:"GLOBAL-ADMIN,COUNTRY-ADMIN" %}
+                                <div class="mr-4">
+                                    <div class="modal fade"
+                                         id="upload_modal"
+                                         tabindex="-1"
+                                         aria-labelledby="upload_modal"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog modal-large">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="myModalLabel">Upload GAUL 3 datasets</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div>
+                                                        <form class="mb-3 text-center">
+                                                            {% csrf_token %}
+                                                            <button class="btn btn-secondary"
+                                                                    formmethod="post"
+                                                                    formtarget="_blank"
+                                                                    name="download_format"
+                                                                    type="submit">
+                                                                <i class="fa fa-download mr-1"></i>Download Format
+                                                            </button>
+                                                        </form>
+                                                        <form id="upload_form" enctype="multipart/form-data">
+                                                            {% csrf_token %}
+                                                            <div class="custom-file mb-4">
+                                                                <input type="file"
+                                                                       class="custom-file-input"
+                                                                       style="opacity:0!important"
+                                                                       name="file"
+                                                                       id="file_input"
+                                                                       form="upload_form">
+                                                                <label class="custom-file-label" for="file">Choose file</label>
+                                                            </div>
+                                                            <p class="text-sm">
+                                                                <span>
+                                                                    Get the format file, fill in your information, and then upload it again. We'll make sure everything looks good before accepting it. Here are the columns we allow.
+                                                                </span>
+                                                                <ul class="text-xs">
+                                                                    <li>NAME_0</li>
+                                                                    <li>NAME_1</li>
+                                                                    <li>NAME_2</li>
+                                                                    <li>geometry</li>
+                                                                </ul>
+                                                            </p>
+                                                            <div id="upload_success"
+                                                                 class="alert alert-success alert-dismissible fade mt-2">
+                                                                <span>Successfully uploaded GAUL 3.</span>
+                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div id="upload_error"
+                                                                 class="alert alert-warning alert-dismissible fade mt-2">
+                                                                <span id="upload_error_text"></span>
+                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-footer flex"
+                                                                 style="width: 100%;
+                                                                        justify-content: space-between;
+                                                                        align-items: center">
+                                                                <div style="max-width: 300px; width: 100%;">
+                                                                    <div class="progress" id="progress"  style="height: 24px; display: none;">
+                                                                        <div class="progress-bar"
+                                                                             id="progressBar"
+                                                                             role="progressbar"
+                                                                             style="width: 0%"
+                                                                             aria-valuenow="0"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100">0%</div>
+                                                                    </div>
+                                                                </div>
+                                                                <button class="btn btn-primary"
+                                                                        formmethod="post"
+                                                                        id="upload_button"
+                                                                        name="upload_button"
+                                                                        type="submit">
+                                                                    <i class="fa fa-upload mr-1"></i>Upload
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button data-toggle="modal"
+                                            data-target="#upload_modal"
+                                            class="btn btn-secondary"
+                                            name="upload">
+                                        <i class="fa fa-upload mr-1"></i>
+                                        {% trans "Upload Data" %}
+                                    </button>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <!-- Light table -->
+                    <div class="table-responsive">
+                        <table id="resources_data_table"
+                               class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col" class="sort">No</th>
+                                    <th scope="col" class="sort text-left">{% trans "GAUL3 Name" %}</th>
+                                    <th scope="col" class="sort text-left">{% trans "GAUL 2" %}</th>
+                                    <th scope="col" class="sort text-left">{% trans "GAUL 1" %}</th>
+                                    <th scope="col" class="sort">{% trans "Country" %}</th>
+                                    <th scope="col" class="sort">{% trans "Size" %}</th>
+                                    <th scope="col" class="sort">{% trans "Geometry" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="list">
+                                {% for row in resources %}
+                                    <tr>
+                                        <th scope="row">
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    <span class="name mb-0 text-sm">{{ forloop.counter }}</span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <td class="text-left">{{ row.name }}</td>
+                                        <td class="text-left">{{ row.GAUL2.name }}</td>
+                                        <td class="text-left">{{ row.GAUL1.name }}</td>
+                                        <td>{{ row.country.country_name }}</td>
+                                        <td>{{ row.size }}</td>
+                                        <td>
+                                            {% if row.geometry %}
+                                                {{ row.geometry.geom_type }}
+                                            {% else %}
+                                                None
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+    <!-- jQuery Datatable js -->
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <!-- Bootstrap Datatable js -->
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#resources_data_table').DataTable({
+                "language": {
+                    "paginate": {
+                    "previous": '<i class="fas fa-angle-left"></i>',
+                    "next": '<i class="fas fa-angle-right"></i>'
+                    }
+                }
+            });
+            $('#resources_data_table_filter').hide();
+        });
+    </script>
+    <!--  -->
+    <!-- Uploading Data Modal -->
+    <script>
+        $('#file_input').on('change',function(e){
+            var fileName = e.target.files[0].name;;
+            $(this).next('.custom-file-label').html(fileName);
+        })
+
+        $("#upload_form").submit(function(event) {
+            event.preventDefault(); // Stop default submission
+            let formData =  new FormData(document.querySelector("#upload_form"));
+            formData.append("upload_button", '');
+            $("#progress").show();
+            $.ajax({
+                type: "POST",
+                url:  "{% url 'gaul3' %}",
+                data: formData, // serializes the form's elements.
+                processData: false,
+                contentType: false,
+                success: function (resp){
+                    $("#upload_success").addClass("show");
+                    $("#upload_error").removeClass("show");
+                    setTimeout(function(){
+                        window.location.reload();
+                    },3000);
+                    $("#progress").delay(2000).hide(0);
+                },
+                error: function (err){
+                    console.log('Got error ');
+                    console.log(err.responseText)
+                    try {
+                        err.responseText = JSON.parse(err.responseText);
+                        if(Array.isArray(err.responseText.error)){
+                            const $ul = $('<ul>', { class: "mylist" })
+                            err.responseText.error.forEach(function(error){
+                                $ul.append($("<li>").append(error))
+                            });
+                            $("#upload_error_text").html($ul);
+                        }
+                        else {
+                            $("#upload_error_text").text(err.responseText.error);
+                        }
+                    } catch(err) {
+                        $("#upload_error_text").text(err.responseText); 
+                    }
+                    $("#upload_error").addClass("show");
+                    $("#progress").delay(2000).hide(0);
+                },
+                xhr: function() {
+                    var xhr = new window.XMLHttpRequest();
+                    xhr.upload.addEventListener("progress", function(evt) {
+                        if (evt.lengthComputable) {
+                            var percentComplete = (evt.loaded / evt.total) * 100;
+                            // Place upload progress bar visibility code here
+                            $("#progressBar")
+                                .css({"width": `${percentComplete}%`})
+                                .attr("aria-valuenow", percentComplete)
+                                .text(`${percentComplete}%`);
+                        }
+                    }, false);
+                    return xhr;
+                },
+            })
+
+        });
+    </script>
+{% endblock javascripts %}

@@ -1,0 +1,204 @@
+{% extends 'layouts/base.html' %}
+{% load i18n %}
+{% load index %}
+
+{% block stylesheets %}
+    <style>
+        .status-circle {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+        }
+
+        .status_active {
+            background-color: #0eb1af;
+        }
+
+        .status_inactive {
+            background-color: red;
+        }
+    </style>
+{% endblock stylesheets %}
+
+{% block title %} Tables {% endblock title %}
+
+{% block content %}
+
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div>
+                    <button id="collap_button" class="pr-3 sidenav-toggler sidenav-toggler-dark btn btn-primary"
+                        type="button" data-action="sidenav-pin" data-target="#sidenav-main"><i
+                            class="fas fa-bars"></i></button>&nbsp;&nbsp;&nbsp;<h6
+                        class="h2 text-white d-inline-block mb-0">{% trans "Users" %}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <!-- Dark table -->
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header border-0">
+                    <div style="float: left">
+                        <h3 class="mb-0">{% trans "Users" %}</h3>
+                    </div>
+
+                </div>
+                <!-- Light table -->
+                <div class="table-responsive">
+                    <table id="users_table" class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col" class="sort">No</th>
+                                <th scope="col" class="sort">{% trans "First Name" %}</th>
+                                <th scope="col" class="sort">{% trans "Last Name"%}</th>
+                                <th scope="col" class="sort">{% trans "Username" %}</th>
+                                <th scope="col" class="sort">{% trans "Email address" %}</th>
+                                <th scope="col" class="sort">{% trans "Phone" %}</th>
+                                <th scope="col" class="sort">{% trans "Organization" %}</th>
+                                <th scope="col" class="sort">{% trans "Country" %}</th>
+                                <th scope="col" class="sort">{% trans "Role" %}</th>
+                                <th scope="col" class="sort">{% trans "Status" %}</th>
+                                <th scope="col" class="sort"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="list">
+                            {% if request.user.remuser.role.role_name|check_list:"GLOBAL-ADMIN,COUNTRY-ADMIN" %}
+                            <tr>
+                                <th scope="row">
+                                    <div class="media align-items-center">
+                                        <div class="media-body">
+                                            <span class="name mb-0 text-sm">0</span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td>
+                                    {{ request.user.first_name }}
+                                </td>
+                                <td>
+                                    {{ request.user.last_name }}
+                                </td>
+                                <td>
+                                    {{ request.user.username }}
+                                </td>
+                                <td>
+                                    {{ request.user.email }}
+                                </td>
+                                <td>
+                                    {{ request.user.remuser.phone }}
+                                </td>
+                                <td>
+                                    {{ request.user.remuser.organization }}
+                                </td>
+                                <td>
+                                    {% for country in request.user.remuser.country_id.all %}
+                                      <span>{{ country }}</span>
+                                      {% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {{ request.user.remuser.role }}
+                                </td>
+                                <td>
+                                    {% if request.user.is_active == True %}
+                                        <div class="status-circle status_active"></div>
+                                    {% else %}
+                                        <div class="status-circle status_inactive"></div>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{% url 'modify_user' id=request.user.remuser.id %}" class="btn btn-primary">{% trans "Edit user" %}</a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% for user in users %}
+                            <tr>
+                                <th scope="row">
+                                    <div class="media align-items-center">
+                                        <div class="media-body">
+                                            <span class="name mb-0 text-sm">{{ forloop.counter }}</span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td>
+                                    {{ user.user.first_name }}
+                                </td>
+                                <td>
+                                    {{ user.user.last_name }}
+                                </td>
+                                <td>
+                                    {{ user.user.username }}
+                                </td>
+                                <td>
+                                    {{ user.user.email }}
+                                </td>
+                                <td>
+                                    {{ user.phone }}
+                                </td>
+                                <td>
+                                    {{ user.organization }}
+                                </td>
+                                <td>
+                                    {% for country in user.country_id.all %}
+                                      <span>{{ country }}</span>
+                                      {% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {{ user.role }}
+                                </td>
+                                <td>
+                                    {% if user.user.is_active == True %}
+                                        <div class="status-circle status_active"></div>
+                                    {% else %}
+                                        <div class="status-circle status_inactive"></div>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{% url 'modify_user' id=user.id %}" class="btn btn-primary">{% trans "Edit user" %}</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+<!-- jQuery Datatable js -->
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<!-- Bootstrap Datatable js -->
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#users_table').DataTable({
+            "language": {
+                "paginate": {
+                    "previous": '<i class="fas fa-angle-left"></i>',
+                    "next": '<i class="fas fa-angle-right"></i>'
+                }
+            },
+            search: {
+                return: true
+            }
+        });
+    });
+</script>
+{% endblock javascripts %}

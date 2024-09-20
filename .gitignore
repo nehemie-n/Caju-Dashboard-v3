@@ -1,0 +1,52 @@
+**/__pycache__
+
+.idea
+.vscode/
+**/.vs
+**/.vscode
+
+**/.venv
+venv
+env
+
+*.db
+my_db.db
+media
+
+
+.sqlite
+db.sqlite3
+my_db.db
+Ivory Coast.db
+Benin.db
+
+
+# staticfiles/Benin/map_datas
+# staticfiles/Ivory Coast/map_datas
+sqlbak.deb
+**/.env
+.env
+solar-fuze-338810-9d9929202016.json
+tns-wiredin-cqna.pem
+config/gunicorn/gunicorn.sh
+
+# ignore country specific datasets
+staticfiles/Benin
+staticfiles/Ivory Coast
+
+**/node_modules
+node_modules/
+**/npm-debug.log
+
+webpack-stats.json
+/home/ubuntu/project_dir/Caju-Dashboard-v2/apps/static/assets/css/
+/home/ubuntu/project_dir/Caju-Dashboard-v2/apps/static/assets/js/
+.celery_worker.conf.swp
+
+
+temp
+
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store

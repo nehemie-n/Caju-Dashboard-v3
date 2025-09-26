@@ -42,24 +42,15 @@ To install the project, follow these steps:
    $ git clone https://github.com/TechnoServe/Caju-Dashboard-v2.git
    $ cd Caju-Dashboard-v2
 
-2. Create and activate a virtual environment:
-
-    Linux:
+2. Install uv (if not already installed):
 
     ```
-    $ python3 -m venv venv
-    $ source venv/bin/activate
+    $ pip install uv
     ```
 
-    Windows:
-
-    ```
-    $ python -m venv env
-    $ .\env\Scripts\activate
-    ```
 3. Install the dependencies:
 
-    $ pipenv install --dev
+    $ uv sync
 
 4. Run database migrations:
     
@@ -67,16 +58,12 @@ To install the project, follow these steps:
 
 # Usage
 
-1. Activate the virtual environment (if not already activated):
-    ```
-    $ source env/bin/activate
-    ```
-2. Start the Django development server:
+1. Start the Django development server:
 
     ```
     $ make run 
     ```
-3. Open your web browser and access the dashboard at http://localhost:8000.
+2. Open your web browser and access the dashboard at http://localhost:8000.
 
 # Configuration
 
@@ -141,5 +128,18 @@ To install the project, follow these steps:
 
 ![image](https://github.com/TechnoServe/Caju-Dashboard-v2/assets/134303266/f59af0cc-fcd7-4a43-b84c-3861a3d0923c)
 
+## Migration from Pipenv to UV
 
+This project has been migrated from `pipenv` to `uv` for better performance and dependency management. If you're updating from a previous version:
 
+1. **Install uv**: `pip install uv`
+2. **Remove old virtual environment**: Delete any existing `venv/` or `.venv/` directories
+3. **Install dependencies**: Run `uv sync` to create a new virtual environment and install dependencies
+4. **Update your workflow**: Use `uv run <command>` instead of `pipenv run <command>`
+
+### Command Changes:
+- `pipenv install` → `uv sync`
+- `pipenv run python manage.py <command>` → `uv run python manage.py <command>`
+- `pipenv shell` → `uv shell` (or just use `uv run` for individual commands)
+
+All Makefile commands have been updated to use `uv run` automatically.

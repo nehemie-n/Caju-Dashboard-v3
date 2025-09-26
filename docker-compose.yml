@@ -1,0 +1,244 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword123}
+      MYSQL_DATABASE: ${DASHBOARD_DB_NAME:-caju_dashboard}
+      MYSQL_USER: ${DASHBOARD_DB_USERNAME:-caju_user}
+      MYSQL_PASSWORD: ${DASHBOARD_DB_PASSWORD:-cajupassword123}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./config/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    networks:
+      - caju-network
+
+  # RabbitMQ Message Broker
+  rabbitmq:
+    image: rabbitmq:3.11-management
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBIT_MQ_USERNAME:-user}
+      RABBITMQ_DEFAULT_PASS: ${RABBIT_MQ_PASSWORD:-password@12Xa}
+      RABBITMQ_DEFAULT_VHOST: ${RABBIT_MQ_VHOST:-myvhost}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    ports:
+      - "${RABBITMQ_PORT:-5672}:5672"
+      - "${RABBITMQ_MANAGEMENT_PORT:-15672}:15672"
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    networks:
+      - caju-network
+
+  # Redis for caching and sessions
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - caju-network
+
+  # Django Web Application
+  web:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      - DJANGO_ENV=${DJANGO_ENV:-local}
+      - SECRET_KEY=${SECRET_KEY:-dev-secret-key-change-in-production}
+      - DEBUG=${DEBUG:-True}
+      
+      # Database Configuration
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DASHBOARD_DB_NAME=${DASHBOARD_DB_NAME:-caju_dashboard}
+      - DASHBOARD_DB_NAME_IVORY=${DASHBOARD_DB_NAME_IVORY:-caju_dashboard_ivory}
+      - DASHBOARD_DB_NAME_BENIN=${DASHBOARD_DB_NAME_BENIN:-caju_dashboard_benin}
+      - DASHBOARD_DB_USERNAME=${DASHBOARD_DB_USERNAME:-caju_user}
+      - DASHBOARD_DB_PASSWORD=${DASHBOARD_DB_PASSWORD:-cajupassword123}
+      - DASHBOARD_DB_HOSTNAME=db
+      - DASHBOARD_DB_PORT=3306
+      
+      # RabbitMQ Configuration
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBIT_MQ_USERNAME=${RABBIT_MQ_USERNAME:-user}
+      - RABBIT_MQ_PASSWORD=${RABBIT_MQ_PASSWORD:-password@12Xa}
+      - RABBIT_MQ_VHOST=${RABBIT_MQ_VHOST:-myvhost}
+      
+      # Redis Configuration
+      - REDIS_URL=redis://redis:6379/0
+      
+      # Email Configuration
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+      - EMAIL_PORT=${EMAIL_PORT:-587}
+      
+      # External API Keys
+      - ALTEIA_USER=${ALTEIA_USER}
+      - ALTEIA_PASSWORD=${ALTEIA_PASSWORD}
+      - EE_SERVICE_ACCOUNT=${EE_SERVICE_ACCOUNT}
+      - PRIVATE_KEY=${PRIVATE_KEY:-/app/private_key.json}
+      - EE_PRIVATE_KEY_DATA=${EE_PRIVATE_KEY_DATA}
+      
+      # Earth Engine Configuration
+      - EE_BASE_FOLDER=${EE_BASE_FOLDER}
+      - EE_MANGO_PREDICTION=${EE_MANGO_PREDICTION}
+      - EE_DRONES_GEOTIFF=${EE_DRONES_GEOTIFF}
+      - EE_MANGO_DENSITY_PREDICTION=${EE_MANGO_DENSITY_PREDICTION}
+      - EE_ROAD_LINES=${EE_ROAD_LINES}
+      - EE_WATERWAYS_LINES=${EE_WATERWAYS_LINES}
+      
+      # Other Configuration
+      - SERVER_URL=${SERVER_URL:-http://localhost:8000}
+      - PKEY=${PKEY}
+    volumes:
+      - ./staticfiles:/app/staticfiles
+      - ./media:/app/media
+      - ./private_key.json:/app/private_key.json:ro
+    ports:
+      - "${WEB_PORT:-8000}:8000"
+    networks:
+      - caju-network
+
+  # Celery Worker for background tasks
+  celery:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - db
+      - rabbitmq
+      - redis
+    environment:
+      - DJANGO_ENV=${DJANGO_ENV:-local}
+      - SECRET_KEY=${SECRET_KEY:-dev-secret-key-change-in-production}
+      
+      # Database Configuration
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DASHBOARD_DB_NAME=${DASHBOARD_DB_NAME:-caju_dashboard}
+      - DASHBOARD_DB_NAME_IVORY=${DASHBOARD_DB_NAME_IVORY:-caju_dashboard_ivory}
+      - DASHBOARD_DB_NAME_BENIN=${DASHBOARD_DB_NAME_BENIN:-caju_dashboard_benin}
+      - DASHBOARD_DB_USERNAME=${DASHBOARD_DB_USERNAME:-caju_user}
+      - DASHBOARD_DB_PASSWORD=${DASHBOARD_DB_PASSWORD:-cajupassword123}
+      - DASHBOARD_DB_HOSTNAME=db
+      - DASHBOARD_DB_PORT=3306
+      
+      # RabbitMQ Configuration
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBIT_MQ_USERNAME=${RABBIT_MQ_USERNAME:-user}
+      - RABBIT_MQ_PASSWORD=${RABBIT_MQ_PASSWORD:-password@12Xa}
+      - RABBIT_MQ_VHOST=${RABBIT_MQ_VHOST:-myvhost}
+      
+      # Redis Configuration
+      - REDIS_URL=redis://redis:6379/0
+      
+      # External API Keys (same as web service)
+      - ALTEIA_USER=${ALTEIA_USER}
+      - ALTEIA_PASSWORD=${ALTEIA_PASSWORD}
+      - EE_SERVICE_ACCOUNT=${EE_SERVICE_ACCOUNT}
+      - PRIVATE_KEY=${PRIVATE_KEY:-/app/private_key.json}
+      - EE_PRIVATE_KEY_DATA=${EE_PRIVATE_KEY_DATA}
+      - EE_BASE_FOLDER=${EE_BASE_FOLDER}
+      - EE_MANGO_PREDICTION=${EE_MANGO_PREDICTION}
+      - EE_DRONES_GEOTIFF=${EE_DRONES_GEOTIFF}
+      - EE_MANGO_DENSITY_PREDICTION=${EE_MANGO_DENSITY_PREDICTION}
+      - EE_ROAD_LINES=${EE_ROAD_LINES}
+      - EE_WATERWAYS_LINES=${EE_WATERWAYS_LINES}
+    volumes:
+      - ./media:/app/media
+      - ./private_key.json:/app/private_key.json:ro
+    command: uv run celery -A cajulab_remote_sensing_dashboard worker --loglevel=info
+    networks:
+      - caju-network
+
+  # Celery Beat for scheduled tasks
+  celery-beat:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - db
+      - rabbitmq
+      - redis
+    environment:
+      - DJANGO_ENV=${DJANGO_ENV:-local}
+      - SECRET_KEY=${SECRET_KEY:-dev-secret-key-change-in-production}
+      
+      # Database Configuration
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DASHBOARD_DB_NAME=${DASHBOARD_DB_NAME:-caju_dashboard}
+      - DASHBOARD_DB_USERNAME=${DASHBOARD_DB_USERNAME:-caju_user}
+      - DASHBOARD_DB_PASSWORD=${DASHBOARD_DB_PASSWORD:-cajupassword123}
+      - DASHBOARD_DB_HOSTNAME=db
+      - DASHBOARD_DB_PORT=3306
+      
+      # RabbitMQ Configuration
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBIT_MQ_USERNAME=${RABBIT_MQ_USERNAME:-user}
+      - RABBIT_MQ_PASSWORD=${RABBIT_MQ_PASSWORD:-password@12Xa}
+      - RABBIT_MQ_VHOST=${RABBIT_MQ_VHOST:-myvhost}
+      
+      # Redis Configuration
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - ./private_key.json:/app/private_key.json:ro
+    command: uv run celery -A cajulab_remote_sensing_dashboard beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    networks:
+      - caju-network
+
+  # Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    depends_on:
+      - web
+    ports:
+      - "${NGINX_PORT:-80}:80"
+      - "${NGINX_SSL_PORT:-443}:443"
+    volumes:
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./staticfiles:/app/staticfiles:ro
+      - ./media:/app/media:ro
+      - ./config/ssl:/etc/nginx/ssl:ro
+    networks:
+      - caju-network
+
+volumes:
+  mysql_data:
+  rabbitmq_data:
+  redis_data:
+
+networks:
+  caju-network:
+    driver: bridge

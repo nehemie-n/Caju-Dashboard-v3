@@ -1,0 +1,121 @@
+name: Django CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.12.3]
+    env:
+      DJANGO_ENV: ${{ vars.DJANGO_ENV }}
+      SERVER_URL: ${{ vars.SERVER_URL }}
+      RABBIT_MQ_USERNAME: user
+      RABBIT_MQ_PASSWORD: password@12Xa
+      RABBIT_MQ_VHOST: myvhost
+      EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+      EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
+      EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+      EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
+      PKEY: ${{ secrets.PKEY }}
+      ALTEIA_USER: ${{ secrets.ALTEIA_USER }}
+      ALTEIA_PASSWORD: ${{ secrets.ALTEIA_PASSWORD }}
+      EE_SERVICE_ACCOUNT: ${{ secrets.EE_SERVICE_ACCOUNT }}
+      PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      EE_PRIVATE_KEY_DATA: ${{ secrets.EE_PRIVATE_KEY_DATA }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      EE_BASE_FOLDER: ${{ vars.EE_BASE_FOLDER }}
+      EE_MANGO_PREDICTION: ${{ vars.EE_MANGO_PREDICTION }}
+      EE_DRONES_GEOTIFF: ${{ vars.EE_DRONES_GEOTIFF }}
+      EE_MANGO_DENSITY_PREDICTION: ${{ vars.EE_MANGO_DENSITY_PREDICTION }}
+      EE_ROAD_LINES: ${{ vars.EE_ROAD_LINES }}
+      EE_WATERWAYS_LINES: ${{ vars.EE_WATERWAYS_LINES }}
+      TESTING: "True"
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Write EE_PRIVATE_KEY_DATA to PRIVATE_KEY file
+        run: |
+          echo "$EE_PRIVATE_KEY_DATA" > "$PRIVATE_KEY"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Set up RabbitMQ
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install rabbitmq-server -y
+          sudo systemctl start rabbitmq-server
+          sudo rabbitmqctl add_user $RABBIT_MQ_USERNAME $RABBIT_MQ_PASSWORD
+          sudo rabbitmqctl add_vhost $RABBIT_MQ_VHOST
+          sudo rabbitmqctl set_permissions -p $RABBIT_MQ_VHOST $RABBIT_MQ_USERNAME ".*" ".*" ".*"
+
+      - name: Set up GDAL
+        run: |
+          sudo apt-get install binutils libproj-dev gdal-bin
+
+      - name: Set up the Database
+        run: |
+          sudo apt-get update -y
+          sudo apt-get upgrade -y
+          sudo apt-get install spatialite-bin libsqlite3-mod-spatialite -y
+
+      - name: Cache uv
+        uses: actions/cache@v3
+        id: cache-uv
+        with:
+          path: ${{ env.pythonLocation }}
+          key: ${{ runner.os }}-uv-${{ hashFiles('**/uv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-uv
+
+      - name: Install uv
+        # if: steps.cache-uv.outputs.cache-hit != 'true'
+        run: |
+          python -m pip install --upgrade uv
+
+      - name: Install Dependencies
+        # if: steps.cache-uv.outputs.cache-hit != 'true'
+        run: |
+          uv sync
+
+      - name: Prepare SQLite Database with Spatialite
+        run: |
+          spatialite :memory: "SELECT InitSpatialMetaData();"
+
+      - name: Write EE_PRIVATE_KEY_DATA to PRIVATE_KEY file
+        run: |
+          echo "$EE_PRIVATE_KEY_DATA" > "$PRIVATE_KEY"
+
+      - name: Run Migrations
+        run: |
+          echo "" > .env
+          export TESTING=True&&uv run python manage.py shell -c "import django;django.db.connection.cursor().execute('SELECT InitSpatialMetaData(1);')";
+          export TESTING=True&&uv run python manage.py migrate --skip-checks
+          export TESTING=True&&uv run python manage.py createcachetable 
+          export TESTING=True&&make setup
+
+      - name: Run Tests
+        run: |
+          echo "" > .env
+          export TESTING=True&&uv run python manage.py shell -c "import django;django.db.connection.cursor().execute('SELECT InitSpatialMetaData(1);')";
+          export TESTING=True&&uv run python manage.py test --parallel

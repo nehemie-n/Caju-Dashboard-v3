@@ -157,5 +157,5 @@ if __name__ == "__main__":
 
 #
 # python manage.py migrate --database=default --skip-checks
-# pipenv run python manage.py migrate --database="Ivory Coast" --skip-checks
-# pipenv run python manage.py migrate --database="Benin" --skip-checks
+# uv run python manage.py migrate --database="Ivory Coast" --skip-checks
+# uv run python manage.py migrate --database="Benin" --skip-checks

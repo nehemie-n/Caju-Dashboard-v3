@@ -11,38 +11,38 @@ runb:
 # linux version
 # python3 -m venv venv
 migrations_linux:
-	pipenv run python3 manage.py makemigrations --skip-checks
-	pipenv run python3 manage.py migrate --skip-checks
+	uv run python3 manage.py makemigrations --skip-checks
+	uv run python3 manage.py migrate --skip-checks
 
 # python3 -m venv venv
 migrations:
-	pipenv run py manage.py makemigrations --skip-checks
-	pipenv run py manage.py migrate --skip-checks
+	uv run py manage.py makemigrations --skip-checks
+	uv run py manage.py migrate --skip-checks
 
 # Make migrations and implement them for all installed apps
 makemigrations:
-	pipenv run py manage.py makemigrations --skip-checks
+	uv run py manage.py makemigrations --skip-checks
 
 migrate:
-	pipenv run py manage.py migrate --skip-checks
-	pipenv run py manage.py migrate --database="Ivory Coast" --skip-checks
-	pipenv run py manage.py migrate --database="Benin" --skip-checks
+	uv run py manage.py migrate --skip-checks
+	uv run py manage.py migrate --database="Ivory Coast" --skip-checks
+	uv run py manage.py migrate --database="Benin" --skip-checks
 
 # Check SQL commands to be run by a certain migration script
 # sql:
-# 	pipenv run py manage.py sqlmigrate polls 0001
+# 	uv run py manage.py sqlmigrate polls 0001
 
 # Checks for any problems in your project without making migrations or touching the database.
 check:
-	pipenv run py manage.py check
+	uv run py manage.py check
 
 # Hops into the interactive Python shell and play around with the free API Django gives you. To invoke the Python shell, use this command:
 shell:
-	pipenv run py manage.py shell
+	uv run py manage.py shell
 
 # create superuser
 suser:
-	pipenv run py manage.py createsuperuser
+	uv run py manage.py createsuperuser
 
 # create a message file for translation
 makem:
@@ -77,11 +77,11 @@ clear_celery:
 # 
 # Compute commands
 compute:
-	pipenv run python ./scripts/data_compute_scripts/build_satellite_prediction_computed_data.py "$(country)"
+	uv run python ./scripts/data_compute_scripts/build_satellite_prediction_computed_data.py "$(country)"
 
 # TODO Ename this
 compute_spacing_nursery:
-	pipenv run python ./scripts/data_compute_scripts/tree_spacing_recommandations.py "$(country)"
+	uv run python ./scripts/data_compute_scripts/tree_spacing_recommandations.py "$(country)"
 
 
 db_backup:
@@ -89,14 +89,14 @@ db_backup:
 	sudo ./config/backup/db_backup.sh backup
 	
 setup:
-	pipenv run python ./scripts/setup_scripts/add_countries.py
-	pipenv run python ./scripts/setup_scripts/add_contries_datasets.py
-	pipenv run python ./scripts/setup_scripts/add_organization_and_role.py
+	uv run python ./scripts/setup_scripts/add_countries.py
+	uv run python ./scripts/setup_scripts/add_contries_datasets.py
+	uv run python ./scripts/setup_scripts/add_organization_and_role.py
 
 cache:
-	pipenv run python manage.py createcachetable --database="default"
-	pipenv run python manage.py createcachetable --database="Ivory Coast"
-	pipenv run python manage.py createcachetable --database="Benin"
+	uv run python manage.py createcachetable --database="default"
+	uv run python manage.py createcachetable --database="Ivory Coast"
+	uv run python manage.py createcachetable --database="Benin"
 # Update cron tab to run the job daily
 # crontab -e
 # 0 2 * * * sudo ./~/project_dir/Caju-Dashboard-v2/config/backup/db_backup.sh backup

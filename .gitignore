@@ -8,6 +8,10 @@
 **/.venv
 venv
 env
+.venv/
+
+# uv
+.python-version
 
 *.db
 my_db.db

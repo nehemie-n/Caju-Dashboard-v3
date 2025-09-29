@@ -64,5 +64,5 @@ dependencies = [
     "geopandas>=1.0.1",
 ]
 
-[tool.uv]
-dev-dependencies = []
+[project.optional-dependencies]
+dev = []

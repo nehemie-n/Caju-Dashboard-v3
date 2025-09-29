@@ -20,6 +20,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     spatialite-bin \
     libsqlite3-mod-spatialite \
     curl \
+    python3-dev \
+    default-libmysqlclient-dev \
+    pkg-config \
+    libpq-dev \
+    postgresql-client \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js 16 for frontend build
@@ -34,16 +39,22 @@ COPY pyproject.toml uv.lock ./
 COPY package.json package-lock.json* ./
 
 # Install Python dependencies with uv
-RUN uv sync --frozen
+RUN uv sync
 
-# Install Node.js dependencies and build frontend assets
-RUN npm install && npm run build
+# Install Node.js dependencies
+RUN npm install
 
-# Copy project files
+# Copy project files (needed for webpack to find source files)
 COPY . .
+
+# Build frontend assets (after copying source files)
+RUN npm run build
 
 # Create cache table directory and collect static files
 RUN mkdir -p /app/staticfiles
+
+# Make entrypoint script executable
+RUN chmod +x ./entrypoint.sh
 
 # Create non-root user
 RUN adduser --disabled-password --gecos '' --uid 1000 appuser \

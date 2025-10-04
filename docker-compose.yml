@@ -6,7 +6,7 @@ services:
     image: mysql:8.0
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword123}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MYSQL_DATABASE: ${DASHBOARD_DB_NAME:-caju_dashboard}
       MYSQL_USER: ${DASHBOARD_DB_USERNAME:-caju_user}
       MYSQL_PASSWORD: ${DASHBOARD_DB_PASSWORD:-cajupassword123}

@@ -43,6 +43,22 @@ fi
 echo "Collecting static files..."
 uv run python manage.py collectstatic --noinput
 
-# Start your application
-echo "Starting Django application..."
-exec "$@"
+# Start your application based on the command argument
+case "$1" in
+    web)
+        echo "Starting Django web application with Gunicorn..."
+        exec uv run gunicorn -c config/gunicorn/prod.py -k uvicorn.workers.UvicornWorker cajulab_remote_sensing_dashboard.asgi:application
+        ;;
+    celery)
+        echo "Starting Celery worker..."
+        exec uv run celery -A cajulab_remote_sensing_dashboard worker --loglevel=info
+        ;;
+    celery-beat)
+        echo "Starting Celery beat..."
+        exec uv run celery -A cajulab_remote_sensing_dashboard beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+        ;;
+    *)
+        echo "Starting with custom command: $@"
+        exec "$@"
+        ;;
+esac

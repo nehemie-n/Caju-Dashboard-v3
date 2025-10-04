@@ -12,49 +12,56 @@ ENV DJANGO_ENV=production
 WORKDIR /app
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    binutils \
-    libproj-dev \
-    gdal-bin \
-    spatialite-bin \
-    libsqlite3-mod-spatialite \
-    curl \
-    python3-dev \
-    default-libmysqlclient-dev \
-    pkg-config \
-    libpq-dev \
-    postgresql-client \
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        binutils \
+        libproj-dev \
+        gdal-bin \
+        spatialite-bin \
+        libsqlite3-mod-spatialite \
+        curl \
+        python3-dev \
+        default-libmysqlclient-dev \
+        pkg-config \
+        libpq-dev \
+        postgresql-client \
+        netcat-traditional \
+        nodejs \
+        npm \
+    && curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
+    && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Node.js 16 for frontend build
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
-    && apt-get install -y nodejs
-
 # Install uv
-RUN pip install uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
-# Copy dependency files
-COPY pyproject.toml uv.lock ./
-COPY package.json package-lock.json* ./
+# Set environment variables for uv
+ENV UV_COMPILE_BYTECODE=1
+ENV UV_LINK_MODE=copy
+ENV PATH="/app/.venv/bin:$PATH"
 
-# Install Python dependencies with uv
-RUN uv sync
+# Copy pyproject.toml and uv.lock first for better Docker layer caching
+COPY pyproject.toml uv.lock /app/
+COPY package.json package-lock.json* /app/
+
+# Install Python dependencies using uv
+RUN uv sync --frozen --no-dev
 
 # Install Node.js dependencies
 RUN npm install
 
-# Copy project files (needed for webpack to find source files)
-COPY . .
+# Copy project
+COPY . /app/
 
-# Build frontend assets (after copying source files)
+# Build frontend assets
 RUN npm run build
 
-# Create cache table directory and collect static files
-RUN mkdir -p /app/staticfiles
+# Create media and static directories
+RUN mkdir -p /app/media /app/staticfiles
 
-# Make entrypoint script executable
-RUN chmod +x ./entrypoint.sh
+# Make entrypoint script executable and fix line endings
+RUN sed -i 's/\r$//' /app/entrypoint.sh && chmod +x /app/entrypoint.sh
 
 # Create non-root user
 RUN adduser --disabled-password --gecos '' --uid 1000 appuser \
@@ -65,8 +72,6 @@ USER appuser
 # Expose port
 EXPOSE 8000
 
-# Use the entrypoint script
-ENTRYPOINT ["./entrypoint.sh"]
-
 # Default command
-CMD ["uv", "run", "gunicorn", "-c", "config/gunicorn/prod.py", "-k", "uvicorn.workers.UvicornWorker", "cajulab_remote_sensing_dashboard.asgi:application"]
+ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["web"]

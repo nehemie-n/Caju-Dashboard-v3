@@ -134,9 +134,12 @@ services:
     build: .
     restart: unless-stopped
     depends_on:
-      - db
-      - rabbitmq
-      - redis
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     environment:
       - DJANGO_ENV=${DJANGO_ENV:-local}
       - SECRET_KEY=${SECRET_KEY:-dev-secret-key-change-in-production}
@@ -177,7 +180,7 @@ services:
     volumes:
       - ./media:/app/media
       - ./private_key.json:/app/private_key.json:ro
-    command: uv run celery -A cajulab_remote_sensing_dashboard worker --loglevel=info
+    command: ["celery"]
     networks:
       - caju-network
 
@@ -186,9 +189,12 @@ services:
     build: .
     restart: unless-stopped
     depends_on:
-      - db
-      - rabbitmq
-      - redis
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     environment:
       - DJANGO_ENV=${DJANGO_ENV:-local}
       - SECRET_KEY=${SECRET_KEY:-dev-secret-key-change-in-production}
@@ -213,7 +219,7 @@ services:
       - REDIS_URL=redis://redis:6379/0
     volumes:
       - ./private_key.json:/app/private_key.json:ro
-    command: uv run celery -A cajulab_remote_sensing_dashboard beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    command: ["celery-beat"]
     networks:
       - caju-network
 
@@ -224,8 +230,7 @@ services:
     depends_on:
       - web
     ports:
-      - "${NGINX_PORT:-80}:80"
-      - "${NGINX_SSL_PORT:-443}:443"
+      - "${NGINX_PORT:-8080}:8080"
     volumes:
       - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./staticfiles:/app/staticfiles:ro

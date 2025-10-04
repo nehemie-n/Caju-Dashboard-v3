@@ -131,8 +131,12 @@ create_superuser() {
 # Backup database
 backup_db() {
     print_info "Creating database backup..."
+    if [ -z "${DASHBOARD_DB_PASSWORD}" ]; then
+        print_error "DASHBOARD_DB_PASSWORD environment variable is not set."
+        exit 1
+    fi
     timestamp=$(date +%Y%m%d_%H%M%S)
-    docker compose exec db mysqldump -u caju_user -p caju_dashboard > "backup_${timestamp}.sql"
+    docker compose exec db mysqldump -u caju_user -p"${DASHBOARD_DB_PASSWORD}" caju_dashboard > "backup_${timestamp}.sql"
     print_success "Database backup created: backup_${timestamp}.sql"
 }
 

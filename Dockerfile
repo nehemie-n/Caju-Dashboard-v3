@@ -29,6 +29,7 @@ RUN apt-get update \
         netcat-traditional \
         nodejs \
         npm \
+        gosu \
     && curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
     && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
@@ -67,7 +68,8 @@ RUN sed -i 's/\r$//' /app/entrypoint.sh && chmod +x /app/entrypoint.sh
 RUN adduser --disabled-password --gecos '' --uid 1000 appuser \
     && chown -R appuser:appuser /app
 
-USER appuser
+# Don't switch to appuser yet - we'll handle permissions in entrypoint
+# USER appuser
 
 # Expose port
 EXPOSE 8000

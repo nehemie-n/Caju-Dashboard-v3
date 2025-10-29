@@ -3,6 +3,11 @@
 # Exit script in case of error
 set -e
 
+# Ensure proper permissions for mounted volumes
+echo "Setting up permissions for mounted volumes..."
+chown -R appuser:appuser /app/staticfiles /app/media 2>/dev/null || true
+chmod -R 755 /app/staticfiles /app/media 2>/dev/null || true
+
 # Wait for database to be ready
 echo "Waiting for database to be ready..."
 while ! nc -z $DB_HOST $DB_PORT; do
@@ -49,22 +54,25 @@ fi
 echo "Collecting static files..."
 uv run python manage.py collectstatic --noinput
 
+# Switch to non-root user for running the application
+echo "Switching to appuser..."
+
 # Start your application based on the command argument
 case "$1" in
     web)
         echo "Starting Django web application with Gunicorn..."
-        exec uv run gunicorn -c config/gunicorn/prod.py -k uvicorn.workers.UvicornWorker cajulab_remote_sensing_dashboard.asgi:application
+        exec gosu appuser uv run gunicorn -c config/gunicorn/prod.py -k uvicorn.workers.UvicornWorker cajulab_remote_sensing_dashboard.asgi:application
         ;;
     celery)
         echo "Starting Celery worker..."
-        exec uv run celery -A cajulab_remote_sensing_dashboard worker --loglevel=info
+        exec gosu appuser uv run celery -A cajulab_remote_sensing_dashboard worker --loglevel=info
         ;;
     celery-beat)
         echo "Starting Celery beat..."
-        exec uv run celery -A cajulab_remote_sensing_dashboard beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+        exec gosu appuser uv run celery -A cajulab_remote_sensing_dashboard beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler
         ;;
     *)
         echo "Starting with custom command: $@"
-        exec "$@"
+        exec gosu appuser "$@"
         ;;
 esac

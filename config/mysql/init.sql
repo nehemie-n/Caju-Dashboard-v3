@@ -1,14 +1,12 @@
 -- MySQL initialization script for Caju Dashboard
 -- This script creates the necessary databases for different countries
 
--- Create main database (already created by MYSQL_DATABASE env var)
--- CREATE DATABASE IF NOT EXISTS caju_dashboard;
-
--- Create Ivory Coast database
+-- Create all three production databases
+CREATE DATABASE IF NOT EXISTS caju_dashboard;
 CREATE DATABASE IF NOT EXISTS caju_dashboard_ivory;
 CREATE DATABASE IF NOT EXISTS caju_dashboard_benin;
 
--- Grant permissions to the user
+-- Grant permissions to the user for all production databases
 GRANT ALL PRIVILEGES ON caju_dashboard.* TO 'caju_user'@'%';
 GRANT ALL PRIVILEGES ON caju_dashboard_ivory.* TO 'caju_user'@'%';
 GRANT ALL PRIVILEGES ON caju_dashboard_benin.* TO 'caju_user'@'%';

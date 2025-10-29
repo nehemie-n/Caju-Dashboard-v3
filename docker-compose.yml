@@ -203,6 +203,8 @@ services:
       - DB_HOST=db
       - DB_PORT=3306
       - DASHBOARD_DB_NAME=${DASHBOARD_DB_NAME:-caju_dashboard}
+      - DASHBOARD_DB_NAME_IVORY=${DASHBOARD_DB_NAME_IVORY:-caju_dashboard_ivory}
+      - DASHBOARD_DB_NAME_BENIN=${DASHBOARD_DB_NAME_BENIN:-caju_dashboard_benin}
       - DASHBOARD_DB_USERNAME=${DASHBOARD_DB_USERNAME:-caju_user}
       - DASHBOARD_DB_PASSWORD=${DASHBOARD_DB_PASSWORD:-cajupassword123}
       - DASHBOARD_DB_HOSTNAME=db

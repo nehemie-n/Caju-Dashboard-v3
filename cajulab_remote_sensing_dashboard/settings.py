@@ -154,6 +154,10 @@ else:
             "PASSWORD": os.getenv("DASHBOARD_DB_PASSWORD"),
             "HOST": os.getenv("DASHBOARD_DB_HOSTNAME"),
             "PORT": os.getenv("DASHBOARD_DB_PORT"),
+            "OPTIONS": {
+                "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+                "charset": "utf8mb4",
+            },
         },
         "Ivory Coast": {
             "ENGINE": "django.contrib.gis.db.backends.mysql",
@@ -162,6 +166,10 @@ else:
             "PASSWORD": os.getenv("DASHBOARD_DB_PASSWORD"),
             "HOST": os.getenv("DASHBOARD_DB_HOSTNAME"),
             "PORT": os.getenv("DASHBOARD_DB_PORT"),
+            "OPTIONS": {
+                "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+                "charset": "utf8mb4",
+            },
         },
         "Benin": {
             "ENGINE": "django.contrib.gis.db.backends.mysql",
@@ -170,6 +178,10 @@ else:
             "PASSWORD": os.getenv("DASHBOARD_DB_PASSWORD"),
             "HOST": os.getenv("DASHBOARD_DB_HOSTNAME"),
             "PORT": os.getenv("DASHBOARD_DB_PORT"),
+            "OPTIONS": {
+                "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+                "charset": "utf8mb4",
+            },
         },
     }
 

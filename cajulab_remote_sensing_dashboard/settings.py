@@ -276,13 +276,21 @@ if env == "production":
     # Extra places for collectstatic to find static files.
     STATICFILES_DIRS = (BASE_DIR / "apps/static",)
     CSRF_TRUSTED_ORIGINS = ["https://cajuboard.tnslabs.org"]
-else:
+elif env == "uat":
     STATIC_ROOT = "/var/www/testcajuboard.tnslabs.org/static"
     STATIC_URL = "/static/"
 
     # Extra places for collectstatic to find static files.
     STATICFILES_DIRS = (os.path.join(CORE_DIR, "apps/static"),)
     CSRF_TRUSTED_ORIGINS = ["https://testcajuboard.tnslabs.org"]
+else:
+    # Local/Docker environment
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+    STATIC_URL = "/static/"
+
+    # Extra places for collectstatic to find static files.
+    STATICFILES_DIRS = (os.path.join(CORE_DIR, "apps/static"),)
+    CSRF_TRUSTED_ORIGINS = ["http://localhost:8000", "http://127.0.0.1:8000"]
 
 #############################################################
 SECURE_HSTS_SECONDS = 15780000

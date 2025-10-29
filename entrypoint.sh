@@ -28,10 +28,16 @@ fi
 # Apply Django database migrations
 echo "Applying database migrations..."
 uv run python manage.py migrate --skip-checks
+echo "Migrating Ivory Coast database..."
+uv run python manage.py migrate --database="Ivory Coast" --skip-checks
+echo "Migrating Benin database..."
+uv run python manage.py migrate --database="Benin" --skip-checks
 
 # Create cache table
 echo "Creating cache table..."
 uv run python manage.py createcachetable || true
+uv run python manage.py createcachetable --database="Ivory Coast" || true
+uv run python manage.py createcachetable --database="Benin" || true
 
 # Run setup if not in test mode
 if [ "$DJANGO_ENV" != "test" ] && [ "$TESTING" != "True" ]; then
